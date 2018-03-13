@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
+	'hostname' => 'servbdd.iutlan.etu.univ-rennes1.fr',
+	'username' => 'lequecvi',
 	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'database' => 'pg_lequecvi',
+	'dbdriver' => 'postgre',
+	'dbprefix' => 'visagelibre.',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
