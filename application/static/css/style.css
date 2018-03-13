@@ -1,0 +1,32 @@
+.bg-dark {
+    background-color: #222222;
+}
+
+/*Footer*/
+footer {
+    color: #9d9d9d;
+    padding: 1em;
+}
+
+ul.btn-social li a {
+    display: block;
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    background-color: #0d8796;
+    border-radius: 100%;
+    line-height: 40px;
+    color: white;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+ul.btn-social li a:hover,
+ul.btn-social li a:focus,
+ul.btn-social li a:active {
+    background-color: white;
+    color: #0faabd;
+}
