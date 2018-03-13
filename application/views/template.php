@@ -18,7 +18,12 @@
 </head>
 <body>
 
-
+    <section>
+    
+        <?php $this->load->view($content); ?>    
+    
+    </section>
+    
     <footer>
         <div class="container-fluid">
             <div class="row">
