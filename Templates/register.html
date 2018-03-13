@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="icon" type="image/png" href="./static/images/" />-->
+
+    <meta name="description" content="">
+    <meta name="keywords" content="" lang="fr">
+    <meta name="author" content="Nicolas Jousset, Vincent Le Quec">
+
+    <link rel="stylesheet" type="text/css" href="../application/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../application/static/fontawesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="../application/static/css/style.css">
+
+    <title>Visage Livre</title>
+
+	<style>
+		.form-register {
+			width: 100%;
+			max-width: 420px;
+			padding: 15px;
+			margin: 0 auto;
+			margin-top: 5%;
+		}
+	</style>
+</head>
+<body>
+
+	<form class="form-register text-center needs-validation" novalidate>
+		<i class="far fa-smile fa-6x"></i>
+		<h4 class="h4 mb-4">VisageLibre</h4>
+		<h1 class="h3 mb-3 font-weight-normal">Veuillez renseigner les champs</h1>
+		<div class="row">
+			<div class="col-md-6 mb-2 text-left">
+				<label for="firstName">Prénom</label>
+				<input type="text" class="form-control" id="firstName" placeholder="Prénom" required>
+				<div class="invalid-feedback">
+					Un prénom valide est requis.
+				</div>
+			</div>
+			<div class="col-md-6 mb-2 text-left">
+				<label for="lastName">Nom</label>
+				<input type="text" class="form-control" id="lastName" placeholder="Nom" required>
+				<div class="invalid-feedback">
+					Un nom valide est requis.
+				</div>
+			</div>
+		</div>
+		<div class="mb-2 text-left">
+			<label for="inputEmail">Adresse mail</label>
+			<input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required autofocus>
+			<div class="invalid-feedback">
+				Un mail valide est requis.
+			</div>
+		</div>
+		<div class="mb-2 text-left">
+			<label for="inputPassword">Mot de passe</label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+		</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Création</button>
+		<h6 class="h6">Déjà un compte? <a href="#">Connectez vous</a></h6>
+	</form>
+
+
+    <footer class="bg-dark" style="position:fixed;bottom: 0;width: 100%">
+		<div class="mx-auto d-flex justify-content-center">
+			<p class="">&copy; Copyright VisageLibre 2018 | <a href="#">Mentions légales</a></p>
+		</div>
+	</footer>
+
+    <!--JQuery-->
+    <script src="../application/static/jquery-1.11.1.js"></script>
+    <!--Bootstrap-->
+    <script src="../application/static/bootstrap/js/bootstrap.min.js"></script>
+    <!--JS-->
+    <script src="../application/static/js/style.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+	  (function () {
+		  'use strict';
+
+		  window.addEventListener('load', function () {
+			  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+			  var forms = document.getElementsByClassName('needs-validation');
+
+			  // Loop over them and prevent submission
+			  var validation = Array.prototype.filter.call(forms, function (form) {
+				  form.addEventListener('submit', function (event) {
+					  if (form.checkValidity() === false) {
+						  event.preventDefault();
+						  event.stopPropagation();
+					  }
+					  form.classList.add('was-validated');
+				  }, false);
+			  });
+		  }, false);
+	  })();
+	</script>
+</body>
+</html>
