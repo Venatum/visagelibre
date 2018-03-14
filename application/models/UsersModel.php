@@ -4,16 +4,24 @@
         {
             $this->load->database();
         }
-        public function getUsers()
+        public function getUser($userName = null)
         {
-            $query = $this->db->get('todo');
+            if($userName == null){
+                $sql = 'SELECT * FROM visagelivre._user;';
+                $query = $this->db->query($sql);
+
+            }else{
+                $sql = 'SELECT * FROM visagelivre._user WHERE nickname = ?';
+                $query = $this->db->query($sql, array($userName));
+
+            }
             return $query->result_array();
         }
         
-        public function addUser ($userName, $userPass )
+        public function addUser($userName, $userPass )
         {
             $data = array(
-            'nickname' => $userName // Argument given to the method
+            'nickname' => $userName, // Argument given to the method
             'pass' => $userPass // Argument given to the method
             );
             return $this->db->insert( '_user', $data );

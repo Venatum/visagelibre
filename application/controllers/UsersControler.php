@@ -10,7 +10,7 @@ class UsersControler extends CI_Controller {
     {
         $data['user'] = $this->UsersModel->getUser() ;
         $data['title'] = 'Todo list'; // a title to display above the list
-        $data['content'] = 'task_list'; // template will call ' task_list ' sub - view
+        $data['content'] = 'register'; // template will call ' task_list ' sub - view
         $this->load->vars($data);
         $this->load->view('template');
     }
@@ -25,7 +25,7 @@ class UsersControler extends CI_Controller {
             
         }
 
-        
+        /*
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['title'] = 'Cr&eacute;er une t&acirc;che';
@@ -38,6 +38,7 @@ class UsersControler extends CI_Controller {
             $this->todo_model->todo_add_task($title );
             $data['content'] = 'add_success';
         }
+        */
 
         $this->load->vars($data );
         $this->load->view('template');
