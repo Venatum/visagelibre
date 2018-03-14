@@ -2,6 +2,23 @@
     background-color: #222222;
 }
 
+.form-signin,
+.form-register {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin {
+    margin-top: 10%;
+}
+
+.form-register {
+    margin-top: 5%;
+}
+
+
 /*Footer*/
 footer {
     color: #9d9d9d;
