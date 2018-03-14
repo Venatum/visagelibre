@@ -15,7 +15,7 @@ class UsersControler extends CI_Controller {
         $this->load->view('template');
     }
     
-    public function Users($fonc) {
+    public function users($fonc) {
         
         if($fonc == 'new'){
             $data['content'] = 'addUser';

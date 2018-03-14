@@ -1,5 +1,5 @@
 <?php
-class UsersControler extends CI_Controller {
+class VisageLivreControler extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
@@ -16,6 +16,7 @@ class UsersControler extends CI_Controller {
     }
     
     public function create () {
+/*
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['title'] = 'Cr&eacute;er une t&acirc;che';
@@ -28,8 +29,8 @@ class UsersControler extends CI_Controller {
             $this->todo_model->todo_add_task($title );
             $data['content'] = 'add_success';
         }
-
-        $this->load->vars($data );
+*/
+        $this->load->vars($data);
         $this->load->view('template');
         }
     
