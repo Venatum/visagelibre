@@ -10,7 +10,9 @@ class VisageLivreControler extends CI_Controller {
     {
         $data['user'] = $this->UsersModel->getUser() ;
         $data['title'] = 'Todo list'; // a title to display above the list
-        $data['content'] = 'register'; // template will call ' task_list ' sub - view
+        $data['content'] = 'signin'; // template will call ' task_list ' sub - view
+        $this->load->helper('form');
+        $this->load->helper('url');
         $this->load->vars($data);
         $this->load->view('template');
     }
