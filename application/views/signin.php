@@ -1,5 +1,5 @@
 <?php
-    echo form_open("signin", 'class="form-signin text-center"');
+    echo form_open("", 'class="form-signin text-center"');
 ?>
 <!--<form class="form-signin text-center">-->
     <i class="far fa-smile fa-6x"></i>

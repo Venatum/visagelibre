@@ -9,11 +9,11 @@
     <meta name="keywords" content="" lang="fr">
     <meta name="author" content="Nicolas Jousset, Vincent Le Quec">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/bootstrap/css/bootstrap.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/bootstrap/css/bootstrap-theme.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/fontawesome/css/fontawesome-all.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('static/css/style.css')?>">
-    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/static/bootstrap/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/static/bootstrap/css/bootstrap-theme.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/static/fontawesome/css/fontawesome-all.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/static/css/style.css')?>">
+
     <title>Visage Livre</title>
 </head>
 <body>

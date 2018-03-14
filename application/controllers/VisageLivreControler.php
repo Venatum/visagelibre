@@ -3,18 +3,39 @@ class VisageLivreControler extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        session_start();
         $this->load->model('UsersModel');
     }
     
     public function index()
     {
-        $data['user'] = $this->UsersModel->getUser() ;
-        $data['title'] = 'Todo list'; // a title to display above the list
-        $data['content'] = 'signin'; // template will call ' task_list ' sub - view
+        
+        $data['content'] = 'signin'; // template will call 'signin' sub - view
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->vars($data);
         $this->load->view('template');
+        
+        
+        isset($_SESSION['mode']) ? null : $_SESSION['mode'] = 'signin';
+        
+        $data['user'] = $this->UsersModel->getUser() ;
+        $data['title'] = 'Visage Livre'; // a title to display above the list
+        
+        if($_SESSION['mode'] == 'signin'){
+            $this->load->library('../controllers/UsersControler');
+            $controler = new $this->UsersControler();
+            }
+        }elseif($_SESSION['mode'] == 'signin')
+        
+        $controler->index();
+        
+        
+        
+        
+        
+        
+        
     }
     
     public function create () {
