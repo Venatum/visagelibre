@@ -12,13 +12,14 @@
     <link rel="stylesheet" type="text/css" href="../application/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../application/static/fontawesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="../application/static/css/style.css">
+    <!--Bootstrap-->
+    <script src="../application/static/bootstrap/js/bootstrap.min.js"></script>
 
     <title>Visage Livre</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand offset-2" href="#">
-			<!--<img src="" width="30" height="30" class="d-inline-block align-top" alt="VisageLivre">-->
 			<i class="far fa-smile"></i>
 			VisageLivre
 		</a>
@@ -26,72 +27,143 @@
 				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-				<div class="collapse navbar-collapse offset-6" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse offset-6" id="navbarSupportedContent">
+			<!--<form class="form-inline offset-3">-->
+				<!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+				<!--<button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>-->
+			<!--</form>-->
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Link1<span class="sr-only"></span></a>
+					<a class="nav-link" href="#" title="Accueil">Accueil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Link2</a>
+					<a class="nav-link disabled" href="#" title="Se connecter">Se connecter</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Disabled</a>
+					<a class="nav-link disabled" href="#" title="S'inscrire">S'inscrire</a>
 				</li>
+				<!--<li class="nav-item">-->
+					<!--<button class="dropdown-item">-->
+						<!--<i class="far fa-bell fa-2x"></i>-->
+					<!--</button>-->
+				<!--</li>-->
 			</ul>
-			<!--<form class="form-inline my-2 my-lg-0">-->
-				<!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-				<!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-			<!--</form>-->
 		</div>
 	</nav>
 
     <section class="container-fluid row">
         <!-- Profile -->
-        <div id="profile" class="col-md-3 m-3 myCard">
+        <div id="profile" class="col-md-2 myCard">
             <div class="container-fluid text-center">
                 <h4>Mon Profile</h4>
                 <p><img src="../application/static/images/avatar3.png" alt="Avatar" class="avatar"></p>
                 <hr>
-                <p><i class="fas fa-at"></i> admin@datsite.eu </p>
+                <p><i class="fas fa-at"></i> Admin Toto </p>
+                <p><i class="fas fa-envelope"></i> admin@datsite.eu </p>
             </div>
         </div>
 
-        <div class="col-md-6 m-1">
-            <div class="p-2">
-                <div class="w3-col m12">
-                    <div class="myCard">
-                        <div class="w3-container w3-padding">
-                            <h6 class="h6">Exprimez-vous</h6>
-                            <p contenteditable="true" class="w3-border w3-padding">Bla bla</p>
-                            <button type="button" class="btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid myCard"><br>
-                <div class="row" style="text-align: center">
-                    <img src="../application/static/images/avatar4.png" alt="Avatar" class="avatar m-1" style="width: 60px;height: 60px">
-                    <h4>John Doe</h4><br>
-                    <span class="right">create_date</span>
+		<div class="col-md-6 m-auto">
+			<!--News Input-->
+			<form class="container-fluid myCard p-3" id="newsinput">
+				<h5 class="h5">Exprimez-vous</h5>
+				<input contenteditable="true" placeholder="Exprimez-vous..." style="margin-bottom: 1%; width: 100%"/><br>
+				<button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier</button>
+			</form>
+			<!--News-->
+			<div class="container-fluid myCard p-3"><br>
+                <div style="text-align: center; margin: -5% 0 -5% 0;">
+                    <span class="float-right">create_date</span><br/>
+                    <img src="../application/static/images/avatar3.png" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
+                    <h4>Nickname</h4><br>
                 </div>
                 <hr>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat.</p>
-                <div class="p-3">
-                    <div class="">
-                        <img src="/w3images/nature.jpg" style="width:100%" alt="" class="">
-                    </div>
+				<div class="p-3">
+					<img src="../application/static/images/tmp.png" style="width:100%" alt="todo">
+				</div>
+				<div class="m2">
+					<button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> &nbsp;Aimer</button>
+					<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#comment1"
+							aria-expanded="false" aria-controls="comment1"><i class="far fa-comment"></i> &nbsp;Commenter
+					</button>
+				</div>
+
+				<div class="collapsed" id="comment1">
+					<div class="container-fluid myCard p-3">
+						<!--Comment-->
+						<div class="container-fluid">
+							<div class="col-md-2" style="margin: 0 0 -10% 0;">
+								<img src="../application/static/images/avatar3.png" alt="Nickname" class="avatar"
+									 style="width: 60px;height: 60px">
+								<h6>Nickname</h6>
+							</div>
+							<p class="col-md-9 m-auto text-justify">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</p>
+							<!--<div class="p-3">-->
+								<!--<img src="#" style="width:100%" alt="todo">-->
+							<!--</div>-->
+							<span class="float-right text-muted">create_date</span><br>
+							<hr>
+						</div>
+						<div class="container-fluid">
+							<div class="col-md-2" style="margin: 0 0 -10% 0;">
+								<img src="../application/static/images/avatar3.png" alt="Nickname" class="avatar"
+									 style="width: 60px;height: 60px">
+								<h6>Nickname</h6>
+							</div>
+							<p class="col-md-9 m-auto text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<div class="p-3">
+								<img src="../application/static/images/tmp.png" style="width:100%" alt="todo">
+							</div>
+							<span class="float-right text-muted">create_date</span><br>
+							<hr>
+						</div>
+						<!-- Comment input-->
+						<form id="commentinput">
+						<h5 class="h5">Exprimez-vous</h5>
+							<input contenteditable="true" placeholder="Votre commentaire..."
+								   style="margin-bottom: 1%; width: 100%"/><br>
+							<button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Commenter
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="container-fluid myCard p-3"><br>
+                <div style="text-align: center; margin: -5% 0 -5% 0;">
+                    <span class="float-right">create_date</span><br/>
+                    <img src="../application/static/images/avatar4.png" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
+                    <h4>Nickname</h4><br>
                 </div>
-                <div class="m2">
-                    <button type="button" class="btn-primary"><i class="far fa-thumbs-up"></i> &nbsp;Aimer</button>
-                    <button type="button" class="btn-primary"><i class="far fa-comment"></i> &nbsp;Commenter </button>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
+				<div class="p-3">
+					<img src="../application/static/images/tmp.png" style="width:100%" alt="todo">
+				</div>
+				<div class="m2">
+                    <button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> &nbsp;Aimer</button>
+                    <button type="button" class="btn btn-primary"><i class="far fa-comment"></i> &nbsp;Commenter </button>
                 </div>
             </div>
         </div>
     </section>
-
 
     <footer class="bg-dark">
 		<div class="mx-auto d-flex justify-content-center">
@@ -101,8 +173,6 @@
 
     <!--JQuery-->
     <script src="../application/static/jquery-1.11.1.js"></script>
-    <!--Bootstrap-->
-    <script src="../application/static/bootstrap/js/bootstrap.min.js"></script>
     <!--JS-->
     <script src="../application/static/js/style.js"></script>
 </body>
