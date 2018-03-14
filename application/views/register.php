@@ -5,20 +5,11 @@
     <i class="far fa-smile fa-6x"></i>
     <h4 class="h4 mb-4">VisageLibre</h4>
     <h1 class="h3 mb-3 font-weight-normal">Veuillez renseigner les champs</h1>
-    <div class="row">
-        <div class="col-md-6 mb-2 text-left">
-            <label for="firstName">Prénom</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Prénom" required>
-            <div class="invalid-feedback">
-                Un prénom valide est requis.
-            </div>
-        </div>
-        <div class="col-md-6 mb-2 text-left">
-            <label for="lastName">Nom</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Nom" required>
-            <div class="invalid-feedback">
-                Un nom valide est requis.
-            </div>
+    <div class="col-md-6 mb-2 text-left">
+        <label for="name">Nom</label>
+        <input type="text" class="form-control" id="name" placeholder="Nom" required>
+        <div class="invalid-feedback">
+            Un nom est requis.
         </div>
     </div>
     <div class="mb-2 text-left">
