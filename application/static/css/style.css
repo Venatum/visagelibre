@@ -30,7 +30,7 @@
     color: #000!important;
     background-color: #fff!important;
 	height: 10%;
-	margin: 2% -8% 5% 9%;
+	/*margin: 2% -8% 5% 9%;*/
 }
 
 #profile .avatar {
@@ -44,6 +44,12 @@
 
 .collapsed {
     display: none;
+}
+
+#friends {
+    color: #000!important;
+    background-color: #fff!important;
+    height: 10%;
 }
 
 /*Footer*/

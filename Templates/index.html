@@ -53,27 +53,34 @@
 
     <section class="container-fluid row">
         <!-- Profile -->
-        <div id="profile" class="col-md-2 myCard">
+        <div class="col-md-2 mx-auto myCard p-1" id="profile">
             <div class="container-fluid text-center">
-                <h4>Mon Profile</h4>
+                <h3>Mon Profile</h3>
                 <p><img src="../application/static/images/avatar3.png" alt="Avatar" class="avatar"></p>
                 <hr>
                 <p><i class="fas fa-at"></i> Admin Toto </p>
                 <p><i class="fas fa-envelope"></i> admin@datsite.eu </p>
+                <hr>
+                <button type="button" class="btn btn-link float-right" onclick="displayParam(this);" style="margin-top: -5%">
+                    <i class="fas fa-ellipsis-h"></i></button>
+                <div class="collapsed m-1">
+                    <button type="button" class="btn btn-danger" name="deleteUser">Supprimer votre compte</button>
+                </div>
             </div>
         </div>
 
-		<div class="col-md-6 m-auto">
+        <!--News Section-->
+		<div class="col-md-6 mx-auto">
 			<!--News Input-->
 			<form class="container-fluid myCard p-3" id="newsinput">
-				<h5 class="h5">Exprimez-vous</h5>
+				<h4 class="h4">Exprimez-vous</h4>
 				<input contenteditable="true" placeholder="Exprimez-vous..." style="margin-bottom: 1%; width: 100%"/><br>
 				<button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier</button>
 			</form>
 			<!--News-->
 			<div class="container-fluid myCard p-3"><br>
                 <div style="text-align: center; margin: -5% 0 -5% 0;">
-                    <span class="float-right">create_date</span><br/>
+                    <span class="float-right">create_date</span><br>
                     <img src="../application/static/images/avatar3.png" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
                     <h4>Nickname</h4><br>
                 </div>
@@ -83,12 +90,15 @@
                     aliquip ex ea commodo consequat.</p>
                 <button type="button" class="btn btn-primary" onclick="displayComment(this);">
                     <i class="far fa-comment"></i> &nbsp;Commenter</button>
+                <button type="button" class="btn btn-danger float-right">Supprimer <i class="far fa-times-circle"></i></button>
 
 				<div class="collapsed">
 					<div class="container-fluid myCard p-3">
 						<!--Comment-->
 						<div class="container-fluid">
-							<div class="col-md-2" style="margin: 0 0 -10% 0;">
+                            <button type="button" class="btn btn-outline-danger float-right" name="deleteComment" value="idComment">
+                                <i class="far fa-times-circle"></i></button>
+                            <div class="col-md-2" style="margin: 0 0 -10% 0;">
 								<img src="../application/static/images/avatar3.png" alt="Nickname" class="avatar"
 									 style="width: 60px;height: 60px">
 								<h6>Nickname</h6>
@@ -143,6 +153,7 @@
                     aliquip ex ea commodo consequat.</p>
                 <button type="button" class="btn btn-primary" onclick="displayComment(this);">
                     <i class="far fa-comment"></i> &nbsp;Commenter</button>
+                <button type="button" class="btn btn-danger float-right">Supprimer <i class="far fa-times-circle"></i></button>
                 <div class="collapsed">
                     <div class="container-fluid myCard p-3">
                         <!-- Comment input-->
@@ -157,6 +168,31 @@
                 </div>
             </div>
         </div>
+
+        <!--Friends-->
+        <div class="col-md-2 mx-auto myCard p-1" id="friends">
+            <div class="container-fluid text-center">
+                <h3 class="h3">Amis</h3>
+                <hr>
+                <section>
+                    <h4>Demande d'amis</h4>
+                    <div class="container-fluid m-auto row">
+                        <h5 class="m-auto">Toto</h5>
+                        <button type="button" class="btn btn-outline-success mx-1"><i class="far fa-check-circle"></i></button>
+                        <button type="button" class="btn btn-outline-danger"><i class="far fa-times-circle"></i></button>
+                    </div>
+                    <div class="container-fluid m-auto row">
+                        <h5 class="m-auto">Toto</h5>
+                        <button type="button" class="btn btn-outline-success mx-1"><i class="far fa-check-circle"></i></button>
+                        <button type="button" class="btn btn-outline-danger"><i class="far fa-times-circle"></i></button>
+                    </div>
+                </section>
+                <hr>
+                <section>
+
+                </section>
+            </div>
+        </div>
     </section>
 
     <footer class="bg-dark">
@@ -166,8 +202,11 @@
 	</footer>
 
     <script>
+        function displayParam(e) {
+            $(e).next().toggle("slow", function () {});
+        }
         function displayComment(e) {
-            $(e).next('.collapsed').toggle("slow", function () {});
+            $(e).next().next().toggle("slow", function () {});
         }
     </script>
     <!--JQuery-->
