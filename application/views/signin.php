@@ -9,6 +9,6 @@
     <input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required autofocus>
     <label for="inputPassword" class="sr-only">Mot de passe</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
-    <h6 class="h6">Pas de compte? <a href="#">Enregistrez vous</a></h6>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="connection">Connexion</button>
+    <h6 class="h6">Pas de compte? <a href=" <?php echo base_url('application/views/register.php') ?>">Enregistrez vous</a></h6>
 </form>

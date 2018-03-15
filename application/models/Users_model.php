@@ -1,5 +1,5 @@
 <?php
-    class UsersModel extends CI_Model{
+    class Users_model extends CI_Model{
         public function __construct()
         {
             $this->load->database();
@@ -24,13 +24,13 @@
             
             $sql = 'SELECT * FROM _user WHERE pass = AND email = ?';
             
-            $query = $this->db->query($sql, array($this->hash_password($_POST['inputPassword']), $_POST['inputEmail']));
+            $query = $this->db->query($sql, array(password_hash($_POST['inputPassword']), $_POST['inputEmail']));
 
             if(empty($query->result_array()))
                 $connection = false;
             
             
-            return $connection
+            return $connection;
         }
         
         

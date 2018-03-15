@@ -4,9 +4,10 @@ class VisageLivreControler extends CI_Controller {
     {
         parent::__construct();
         session_start();
-        $this->load->model('UsersModel');
+        $this->load->model('Users_model');
+
     }
-    
+
     public function index()
     {
         
@@ -16,27 +17,50 @@ class VisageLivreControler extends CI_Controller {
         $this->load->vars($data);
         $this->load->view('template');
         
+        isset($_SESSION['mode']) ? null : $_SESSION['mode'] = 'connection';
         
-        isset($_SESSION['mode']) ? null : $_SESSION['mode'] = 'signin';
-        
-        $data['user'] = $this->UsersModel->getUser() ;
         $data['title'] = 'Visage Livre'; // a title to display above the list
         
-        if($_SESSION['mode'] == 'signin'){
-            $this->load->library('../controllers/UsersControler');
-            $controler = new $this->UsersControler();
+        if($_SESSION['mode'] == 'connection'){
+            $this->conection();
+        }//elseif($_SESSION['mode'] == 'User')                Partie qui renverra au controler pour l'utilisateur connecté
+            //require('application/controllers/UsersControler.php');
+            //$this->load->library();
+            //$controler = new UsersControler();
+        else{
+            
+        }
+    }
+    private function conection()
+    {
+        isset($_SESSION['action']) ? null : $_SESSION['action'] = 'signin';
+        /*
+        $data['user'] = $this->Users_model->getUser() ;
+        $data['title'] = 'Todo list'; // a title to display above the list
+         // template will call ' task_list ' sub - view
+        $this->load->vars($data);
+        */
+        if($this->Users_model->confirmConnect() == true){
+            $this->load->view('template');
+            $data['content'] = 'home';
+            $_SESSION['mode'] = 'User';
+        }else{
+            if($_SESSION['action'] == 'register'){
+                $data['content'] = 'register';
+            }else{
+                $data['content'] = 'signin';
             }
-        }elseif($_SESSION['mode'] == 'signin')
-        
-        $controler->index();
-        
-        
-        
-        
-        
-        
+        }
         
     }
+        
+        
+        
+        
+    
+    
+    
+    
     
     public function create () {
 

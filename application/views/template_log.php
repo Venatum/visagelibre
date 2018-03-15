@@ -23,7 +23,9 @@
 <body>
     <section>
         <?php
+            
             $this->load->view($content);
+            
         ?>
     </section>
 
