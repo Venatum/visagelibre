@@ -31,5 +31,6 @@
         </div>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Création</button>
-    <h6 class="h6">Déjà un compte? <a href="#">Connectez vous</a></h6>
+    <h6 class="h6">Déjà un compte? <?php echo anchor('VisageLivreControler/index/signin', 'Connectez vous'); ?></h6>
+
 </form>

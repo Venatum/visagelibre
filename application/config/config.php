@@ -35,7 +35,7 @@ $config['base_url'] = 'http://webetuinfo.iutlan.univ-rennes1.fr/jousseni/visagel
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

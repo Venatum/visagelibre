@@ -10,6 +10,5 @@
     <label for="inputPassword" class="sr-only" >Mot de passe</label>
     <input type="password" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="connection">Connexion</button>
-    <h6 class="h6">Pas de compte? <a href=" <?php echo base_url('') ?>">Enregistrez vous</a></h6> 
-    <input name="register" value="true" hidden>
+    <h6 class="h6">Pas de compte? <?php echo anchor('VisageLivreControler/index/register', 'Enregistrez vous'); ?> </h6> 
 </form>
