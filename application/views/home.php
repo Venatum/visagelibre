@@ -5,8 +5,8 @@
             <h4>Mon Profile</h4>
             <p><img src="../static/images/avatar3.png" alt="Avatar" class="avatar"></p>
             <hr>
-            <p><i class="fas fa-at"></i> <?php echo $_SESSION['user']->getNickname() ?> </p>
-            <p><i class="fas fa-envelope"></i> <?php echo $_SESSION['user']->getEmail() ?> </p>
+            <p><i class="fas fa-at"></i> <?php echo $_SESSION['user']['nickname'] ?> </p>
+            <p><i class="fas fa-envelope"></i> <?php echo $_SESSION['user']['email'] ?> </p>
         </div>
     </div>
 

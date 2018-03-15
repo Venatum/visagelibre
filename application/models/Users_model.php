@@ -3,9 +3,6 @@
         public function __construct()
         {
             $this->load->database();
-            $this->nickname = null;
-            $this->pass = null;
-            $this->email = null;
         }
         public function getUser($userName = null)
         {
@@ -32,27 +29,29 @@
             $connection = true;
             
             $sql = 'SELECT * FROM visagelivre._user WHERE pass = ? AND email = ?';
-            echo $_POST['inputPassword'].$_POST['inputEmail'];
-            $query = $this->db->query($sql, array(password_hash($_POST['inputPassword'], PASSWORD_DEFAULT), $_POST['inputEmail']));
-
-            if(empty($query->result_array()))
-                $connection = false;
-            else{
-                $tab = setUserByEmail();
-                $this->nickname = $tab[1];
-                $this->email = $tab[0];
-            }
+            echo password_hash($_POST['inputPassword'], PASSWORD_DEFAULT).$_POST['inputEmail'];
+            $query = $this->db->query($sql, array(md5($_POST['inputPassword']), $_POST['inputEmail']));
             
+            if(empty($query->result_array())){
+                $connection = false;
+                print_r($query->result_array());
+            }else{
+                $tab = $this->setUserByEmail($_POST['inputEmail']);
+                $_SESSION['user']['nickname'] = $tab[1];
+                $_SESSION['user']['email'] = $tab[0];
+            }
+            echo $connection;
             return $connection;
         }
         
         
         
-        public function addUser($userName, $userPass )
+        public function addUser($userName, $userPass, $userEmail)
         {
             $data = array(
             'nickname' => $userName, // Argument given to the method
-            'pass' => $this->hash_password($userPass) // Argument given to the method
+            'pass' => md5($userPass), // Argument given to the method
+            'email' => $userEmail // Argument given to the method
             );
             return $this->db->insert( '_user', $data );
             // produce ' INSERT INTO todo ( title ) VALUES (...) ;'

@@ -1,5 +1,5 @@
 <?php
-    echo form_open('register', 'class="form-register text-center needs-validation"');
+    echo form_open('', 'class="form-register text-center needs-validation"');
 ?>
 <!--<form class="form-register text-center needs-validation" novalidate>-->
     <i class="far fa-smile fa-6x"></i>
@@ -7,21 +7,21 @@
     <h1 class="h3 mb-3 font-weight-normal">Veuillez renseigner les champs</h1>
     <div class="mb-2 text-left">
         <label for="name">Nom</label>
-        <input type="text" class="form-control" id="name" placeholder="Nom" required>
+        <input type="text" class="form-control" id="name" placeholder="Nom"   name="userName" required>
         <div class="invalid-feedback">
             Un nom est requis.
         </div>
     </div>
     <div class="mb-2 text-left">
         <label for="inputEmail">Adresse mail</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Adresse mail"  name="userEmail" required autofocus>
         <div class="invalid-feedback">
             Un mail valide est requis.
         </div>
     </div>
     <div class="mb-2 text-left">
         <label for="inputPassword">Mot de passe</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe"  name="userPassword" required>
     </div>
     <div class="mb-2 text-left">
         <label for="inputPassword2">Mot de passe</label>

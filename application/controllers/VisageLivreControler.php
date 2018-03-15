@@ -21,18 +21,11 @@ class VisageLivreControler extends CI_Controller {
         $data['title'] = 'Visage Livre'; // a title to display above the list
         
         if($_SESSION['mode'] == 'connection'){
-            //$this->connection($action);
+            
             isset($_SESSION['action']) ?  : $_SESSION['action'] = 'signin';
-
             
             $_SESSION['action'] = $action;
             
-            /*
-            $data['user'] = $this->Users_model->getUser() ;
-            $data['title'] = 'Todo list'; // a title to display above the list
-             // template will call ' task_list ' sub - view
-            $this->load->vars($data);
-            */
             if(isset($_POST['connection'])){
                 if($this->Users_model->confirmConnect() == true){
                     $data['content'] = 'home';
@@ -44,7 +37,14 @@ class VisageLivreControler extends CI_Controller {
                     $this->view = 'template_log';
                     $data['content'] = 'signin';
                 }
-
+            }elseif(isset($_POST['creation'])){
+                try{
+                    $this->Users_model->addUser($_POST['userName'], $_POST['userPassword'], $_POST['userEmail']);
+                }catch(Exception $e){
+                    echo $e;
+                }
+                    $data['content'] = 'signin';
+                $this->view = 'template';
             }else{
                 if($_SESSION['action'] == 'register'){
                     $data['content'] = 'register';
@@ -54,16 +54,22 @@ class VisageLivreControler extends CI_Controller {
 
                 $this->view = 'template_log';
             }
+        }elseif($_SESSION['mode'] == 'user'){
+            
+            
+            
+            
+            
+        }else{
+            $_SESSION['mode'] = 'connection';
         }
+        
+        
+        
+        
+        
         $this->load->vars($data);
         $this->load->view($this->view);
-        //elseif($_SESSION['mode'] == 'User')                Partie qui renverra au controler pour l'utilisateur connecté
-            //require('application/controllers/UsersControler.php');
-            //$this->load->library();
-            //$controler = new UsersControler();
-        
-        
-
 
     }
     
