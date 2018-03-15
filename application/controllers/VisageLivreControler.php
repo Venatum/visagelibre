@@ -10,46 +10,65 @@ class VisageLivreControler extends CI_Controller {
 
     public function index()
     {
-        
+        print_r($_POST);
+        print_r($_SESSION);
         $data['content'] = 'signin'; // template will call 'signin' sub - view
         $this->load->helper('form');
         $this->load->helper('url');
-        $this->load->vars($data);
-        $this->load->view('template');
         
         isset($_SESSION['mode']) ? null : $_SESSION['mode'] = 'connection';
         
         $data['title'] = 'Visage Livre'; // a title to display above the list
         
         if($_SESSION['mode'] == 'connection'){
-            $this->conection();
+            $this->connection();
         }//elseif($_SESSION['mode'] == 'User')                Partie qui renverra au controler pour l'utilisateur connecté
             //require('application/controllers/UsersControler.php');
             //$this->load->library();
             //$controler = new UsersControler();
         else{
-            
+            $this->load->view('template');
+
         }
+        $this->load->vars($data);
+                $this->load->view('template_log');
+
+
     }
-    private function conection()
+    private function connection()
     {
-        isset($_SESSION['action']) ? null : $_SESSION['action'] = 'signin';
+        isset($_SESSION['action']) ?  : $_SESSION['action'] = 'signin';
+        echo 'acae';
+        if(isset($_POST['register'])){
+            $_SESSION['action'] = 'register';
+        }
         /*
         $data['user'] = $this->Users_model->getUser() ;
         $data['title'] = 'Todo list'; // a title to display above the list
          // template will call ' task_list ' sub - view
         $this->load->vars($data);
         */
-        if($this->Users_model->confirmConnect() == true){
-            $this->load->view('template');
-            $data['content'] = 'home';
-            $_SESSION['mode'] = 'User';
+        if(isset($_POST['connection'])){
+            if($this->Users_model->confirmConnect() == true){
+                $data['content'] = 'home';
+
+                $this->load->view('template_log');
+                $_SESSION['mode'] = 'User';
+                
+            }
         }else{
             if($_SESSION['action'] == 'register'){
                 $data['content'] = 'register';
+                $this->load->vars($data);
+
+                $this->load->view('template_log');
             }else{
+                $this->load->view('template_log');
+
                 $data['content'] = 'signin';
+
             }
+            
         }
         
     }
