@@ -37,8 +37,7 @@
                        title="Accueil">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('application/views/sigin.php') ?>" title="Se connecter">Se
-                        connecter</a>
+                    <?php echo anchor('VisageLivreControler/index/signout', "Se déconnecter"); ?>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('application/views/register.php') ?>" title="S'inscrire">S'inscrire</a>

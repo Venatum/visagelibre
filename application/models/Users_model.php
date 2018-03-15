@@ -40,7 +40,7 @@
                 $_SESSION['user']['nickname'] = $tab[1];
                 $_SESSION['user']['email'] = $tab[0];
             }
-            echo $connection;
+            print_r($_SESSION['user']);
             return $connection;
         }
         
