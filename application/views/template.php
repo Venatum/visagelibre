@@ -18,8 +18,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand offset-2" href="#">
-            <!--<img src="" width="30" height="30" class="d-inline-block align-top" alt="VisageLivre">-->
+        <a class="navbar-brand offset-2" href="<?php echo base_url('application/views/home.php') ?>">
             <i class="far fa-smile"></i>
             VisageLivre
         </a>
@@ -28,23 +27,31 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse offset-6" id="navbarSupportedContent">
+            <!--<form class="form-inline offset-3">-->
+            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--<button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>-->
+            <!--</form>-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Link1<span class="sr-only"></span></a>
+                    <a class="nav-link" href="<?php echo base_url('application/views/home.php') ?>"
+                       title="Accueil">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link2</a>
+                    <a class="nav-link" href="<?php echo base_url('application/views/sigin.php') ?>" title="Se connecter">Se
+                        connecter</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="<?php echo base_url('application/views/register.php') ?>" title="S'inscrire">S'inscrire</a>
                 </li>
+                <!--<li class="nav-item">-->
+                <!--<button class="dropdown-item">-->
+                <!--<i class="far fa-bell fa-2x"></i>-->
+                <!--</button>-->
+                <!--</li>-->
             </ul>
-            <!--<form class="form-inline my-2 my-lg-0">-->
-            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-            <!--</form>-->
         </div>
     </nav>
+
     <section>
     
         <?php 

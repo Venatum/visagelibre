@@ -81,17 +81,10 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat.</p>
-				<div class="p-3">
-					<img src="../application/static/images/tmp.png" style="width:100%" alt="todo">
-				</div>
-				<div class="m2">
-					<button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> &nbsp;Aimer</button>
-					<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#comment1"
-							aria-expanded="false" aria-controls="comment1"><i class="far fa-comment"></i> &nbsp;Commenter
-					</button>
-				</div>
+                <button type="button" class="btn btn-primary" onclick="displayComment(this);">
+                    <i class="far fa-comment"></i> &nbsp;Commenter</button>
 
-				<div class="collapsed" id="comment1">
+				<div class="collapsed">
 					<div class="container-fluid myCard p-3">
 						<!--Comment-->
 						<div class="container-fluid">
@@ -111,9 +104,6 @@
 								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
 								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 							</p>
-							<!--<div class="p-3">-->
-								<!--<img src="#" style="width:100%" alt="todo">-->
-							<!--</div>-->
 							<span class="float-right text-muted">create_date</span><br>
 							<hr>
 						</div>
@@ -126,14 +116,11 @@
 							<p class="col-md-9 m-auto text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
 								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							<div class="p-3">
-								<img src="../application/static/images/tmp.png" style="width:100%" alt="todo">
-							</div>
 							<span class="float-right text-muted">create_date</span><br>
 							<hr>
 						</div>
 						<!-- Comment input-->
-						<form id="commentinput">
+						<form>
 						<h5 class="h5">Exprimez-vous</h5>
 							<input contenteditable="true" placeholder="Votre commentaire..."
 								   style="margin-bottom: 1%; width: 100%"/><br>
@@ -154,12 +141,19 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat.</p>
-				<div class="p-3">
-					<img src="../application/static/images/tmp.png" style="width:100%" alt="todo">
-				</div>
-				<div class="m2">
-                    <button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> &nbsp;Aimer</button>
-                    <button type="button" class="btn btn-primary"><i class="far fa-comment"></i> &nbsp;Commenter </button>
+                <button type="button" class="btn btn-primary" onclick="displayComment(this);">
+                    <i class="far fa-comment"></i> &nbsp;Commenter</button>
+                <div class="collapsed">
+                    <div class="container-fluid myCard p-3">
+                        <!-- Comment input-->
+                        <form>
+                            <h5 class="h5">Exprimez-vous</h5>
+                            <input contenteditable="true" placeholder="Votre commentaire..."
+                                   style="margin-bottom: 1%; width: 100%"/><br>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Commenter
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -171,8 +165,13 @@
 		</div>
 	</footer>
 
+    <script>
+        function displayComment(e) {
+            $(e).next('.collapsed').toggle("slow", function () {});
+        }
+    </script>
     <!--JQuery-->
-    <script src="../application/static/jquery-1.11.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--JS-->
     <script src="../application/static/js/style.js"></script>
 </body>

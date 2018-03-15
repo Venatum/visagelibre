@@ -42,6 +42,10 @@
     border-radius: 50%;
 }
 
+.collapsed {
+    display: none;
+}
+
 /*Footer*/
 footer {
     color: #9d9d9d;
