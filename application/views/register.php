@@ -3,7 +3,7 @@
 ?>
 <!--<form class="form-register text-center needs-validation" novalidate>-->
     <i class="far fa-smile fa-6x"></i>
-    <h4 class="h4 mb-4">VisageLibre</h4>
+    <h4 class="h4 mb-4">VisageLivre</h4>
     <h1 class="h3 mb-3 font-weight-normal">Veuillez renseigner les champs</h1>
     <div class="mb-2 text-left">
         <label for="name">Nom</label>
@@ -30,7 +30,7 @@
             Un mot de passe valide est requis.
         </div>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Création</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="creation">Création</button>
     <h6 class="h6">Déjà un compte? <?php echo anchor('VisageLivreControler/index/signin', 'Connectez vous'); ?></h6>
 
 </form>

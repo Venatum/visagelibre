@@ -62,7 +62,7 @@
 
     <footer class="bg-dark">
         <div class="mx-auto d-flex justify-content-center">
-            <p class="">© Copyright VisageLibre 2018 | <a href="#">Mentions légales</a></p>
+            <p class="">© Copyright VisageLivre 2018 | <a href="#">Mentions légales</a></p>
         </div>
     </footer>
 
