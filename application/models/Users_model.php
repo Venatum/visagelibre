@@ -36,9 +36,9 @@
                 $connection = false;
                 print_r($query->result_array());
             }else{
-                $tab = $this->setUserByEmail($_POST['inputEmail']);
-                $_SESSION['user']['nickname'] = $tab[1];
-                $_SESSION['user']['email'] = $tab[0];
+                print_r($tab = $this->setUserByEmail($_POST['inputEmail']));
+                $_SESSION['user']['nickname'] = $tab[0]['nickname'];
+                $_SESSION['user']['email'] = $tab[0]['email'];
             }
             print_r($_SESSION['user']);
             return $connection;

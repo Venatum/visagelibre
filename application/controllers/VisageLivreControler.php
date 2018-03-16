@@ -8,12 +8,11 @@ class VisageLivreControler extends CI_Controller {
         $this->view = 'template';
     }
 
-    public function index($action)
-    {
+    public function index($action = 'index')
+    {   
         $_SESSION['action'] = $action;
 
-        print_r($_POST);
-        print_r($_SESSION);
+        
          // template will call 'signin' sub - view
         $this->load->helper('form');
         $this->load->helper('url');
@@ -22,7 +21,25 @@ class VisageLivreControler extends CI_Controller {
         
         $data['title'] = 'Visage Livre'; // a title to display above the list
         
-        if($_SESSION['mode'] == 'connection'){
+        if($_SESSION['mode'] == 'user'){
+            if($_POST['connection']){
+                
+            }elseif($_SESSION['action'] == 'signout'){
+                
+                $data['content'] = 'signin';
+                $this->view = 'template_log';
+                unset($_SESSION['user']);
+                $_SESSION['mode'] = 'connection';
+
+            }else{
+                $data['content'] = 'home';
+                $this->view = 'template';
+                
+            }
+            
+            
+            
+        }elseif($_SESSION['mode'] == 'connection'){
             
             isset($_SESSION['action']) ?  : $_SESSION['action'] = 'signin';
             
@@ -30,7 +47,7 @@ class VisageLivreControler extends CI_Controller {
             if(isset($_POST['connection'])){
                 if($this->Users_model->confirmConnect() == true){
                     $data['content'] = 'home';
-                    //$this->view = 'template';
+
                     $_SESSION['mode'] = 'user';
                     $this->view = 'template';
 
@@ -38,6 +55,7 @@ class VisageLivreControler extends CI_Controller {
                     $this->view = 'template_log';
                     $data['content'] = 'signin';
                 }
+                unset($_SESSION['action']);
             }elseif(isset($_POST['creation'])){
                 try{
                     $this->Users_model->addUser($_POST['userName'], $_POST['userPassword'], $_POST['userEmail']);
@@ -55,23 +73,6 @@ class VisageLivreControler extends CI_Controller {
 
                 $this->view = 'template_log';
             }
-        }elseif($_SESSION['mode'] == 'user'){
-            
-            if($_SESSION['action'] == 'signout'){
-                
-                $data['content'] = 'signin';
-                $this->view = 'template_log';
-                
-                $_SESSION['mode'] = 'connection';
-
-            }else{
-                $data['content'] = 'home';
-                $this->view = 'template';
-                
-            }
-            
-            
-            
         }else{
             $_SESSION['mode'] = 'connection';
         }
@@ -82,7 +83,8 @@ class VisageLivreControler extends CI_Controller {
         
         $this->load->vars($data);
         $this->load->view($this->view);
-
+        print_r($_POST);
+        print_r($_SESSION);
     }
     
     

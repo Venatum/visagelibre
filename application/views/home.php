@@ -3,7 +3,7 @@
     <div id="profile" class="col-md-2 myCard">
         <div class="container-fluid text-center">
             <h4>Mon Profile</h4>
-            <p><img src="../static/images/avatar3.png" alt="Avatar" class="avatar"></p>
+            <p><img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Avatar" class="avatar"></p>
             <hr>
             <p><i class="fas fa-at"></i> <?php echo $_SESSION['user']['nickname'] ?> </p>
             <p><i class="fas fa-envelope"></i> <?php echo $_SESSION['user']['email'] ?> </p>
@@ -22,7 +22,7 @@
         <div class="container-fluid myCard p-3"><br>
             <div style="text-align: center; margin: -5% 0 -5% 0;">
                 <span class="float-right">create_date</span><br/>
-                <img src="../static/images/avatar3.png" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
+                <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
                 <h4>Nickname</h4><br>
             </div>
             <hr>
@@ -37,7 +37,7 @@
                     <!--Comment-->
                     <div class="container-fluid">
                         <div class="col-md-2" style="margin: 0 0 -10% 0;">
-                            <img src="../static/images/avatar3.png" alt="Nickname" class="avatar"
+                            <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Nickname" class="avatar"
                                  style="width: 60px;height: 60px">
                             <h6>Nickname</h6>
                         </div>
