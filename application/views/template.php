@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/static/bootstrap/css/bootstrap-theme.min.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/static/fontawesome/css/fontawesome-all.min.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('application/static/css/style.css')?>">
-
     <title>Visage Livre</title>
 </head>
 <body>

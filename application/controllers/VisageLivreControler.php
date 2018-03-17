@@ -9,7 +9,9 @@ class VisageLivreControler extends CI_Controller {
     }
 
     public function index($action = 'index')
-    {   
+    {
+
+
         $_SESSION['action'] = $action;
 
         
@@ -63,7 +65,7 @@ class VisageLivreControler extends CI_Controller {
                     echo $e;
                 }
                     $data['content'] = 'signin';
-                $this->view = 'template';
+                $this->view = 'index.php';
             }else{
                 if($_SESSION['action'] == 'register'){
                     $data['content'] = 'register';
