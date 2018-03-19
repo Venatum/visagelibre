@@ -32,8 +32,8 @@
             <!--</form>-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo base_url('application/views/home.php') ?>"
-                       title="Accueil">Accueil</a>
+					<!-- <a class="nav-link" href=" --> <?php echo anchor('VisageLivreControler/index/home', "Accueil"); ?>
+					<!-- title="Accueil">Accueil</a> -->
                 </li>
                 <li class="nav-item">
                     <?php echo anchor('VisageLivreControler/index/signout', "Se déconnecter"); ?>

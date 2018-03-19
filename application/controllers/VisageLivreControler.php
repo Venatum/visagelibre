@@ -8,7 +8,10 @@ class VisageLivreControler extends CI_Controller {
         $this->view = 'template';
     }
 
-    public function index($action = 'index')
+	/**
+	 * @param string $action
+	 */
+	public function index($action = 'index')
     {
 
 
@@ -24,16 +27,26 @@ class VisageLivreControler extends CI_Controller {
         $data['title'] = 'Visage Livre'; // a title to display above the list
         
         if($_SESSION['mode'] == 'user'){
-            if($_POST['connection']){
-                
+            if(isset($_POST['connection'])){
+				$data['content'] = 'home';
+				$this->view = 'template';
+
             }elseif($_SESSION['action'] == 'signout'){
-                
+
                 $data['content'] = 'signin';
                 $this->view = 'template_log';
                 unset($_SESSION['user']);
                 $_SESSION['mode'] = 'connection';
+				header("Location: ".base_url('index.php/VisageLivreControler/index/signin')); // redirection vers la page de connection
+            }elseif($_SESSION['action'] == 'deleteAccount'){
 
-            }else{
+				$data['content'] = 'signin';
+				$this->view = 'template_log';
+				$this->Users_model->deleteAccount();
+				unset($_SESSION['user']);
+				$_SESSION['mode'] = 'connection';
+				header("Location: ".base_url('index.php/VisageLivreControler/index/signin')); // redirection vers la page de connection
+			}else{
                 $data['content'] = 'home';
                 $this->view = 'template';
                 
