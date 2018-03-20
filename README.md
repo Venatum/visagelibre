@@ -1,12 +1,14 @@
 # visagelibre
 
-VisageLibre is a educational project.
+VisageLibre is an educational project.
 
 ## Getting Started
 
 ### Prerequisites
 
-You need a server configuration that accept PHP and [postgreSQL](https://www.postgresql.org/download/).
+You need a:
+* server configuration that accept PHP
+* a [postgreSQL](https://www.postgresql.org/download/) database
 
 ### Installing
 
