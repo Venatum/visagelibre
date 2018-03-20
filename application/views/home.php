@@ -32,10 +32,10 @@
     <!--News Section-->
     <div class="col-md-6 m-auto">
         <!--News Input-->
-        <form class="container-fluid myCard p-3">
+        <form class="container-fluid myCard p-3" method="post">
             <h5 class="h5">Exprimez-vous</h5>
-            <input contenteditable="true" placeholder="Exprimez-vous..." style="margin-bottom: 1%; width: 100%"/><br>
-            <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier</button>
+            <input contenteditable="true" placeholder="Exprimez-vous..." name="content" style="margin-bottom: 1%; width: 100%"/><br>
+            <button name="publier" type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier</button>
         </form>
 
         <!--News-->

@@ -65,11 +65,11 @@
     </footer>
 
     <!--JQuery-->
-    <script src="../static/jquery-1.11.1.js"></script>
+    <script src="<?php echo base_url('application/static/jquery-3.3.1.min.js') ?>"></script>
     <!--Bootstrap-->
-    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('application/static/bootstrap/js/bootstrap.min.js') ?>"></script>
     <!--JS-->
-    <script src="../static/js/style.js"></script>
+    <script src="<?php echo base_url('application/static/js/style.js') ?>"></script>
 </body>
 
 </html>

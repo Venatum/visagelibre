@@ -27,11 +27,7 @@ class VisageLivreControler extends CI_Controller {
         $data['title'] = 'Visage Livre'; // a title to display above the list
         
         if($_SESSION['mode'] == 'user'){
-            if(isset($_POST['connection'])){
-				$data['content'] = 'home';
-				$this->view = 'template';
-
-            }elseif($_SESSION['action'] == 'signout'){
+            if($_SESSION['action'] == 'signout'){
 
                 $data['content'] = 'signin';
                 $this->view = 'template_log';
@@ -46,6 +42,12 @@ class VisageLivreControler extends CI_Controller {
 				unset($_SESSION['user']);
 				$_SESSION['mode'] = 'connection';
 				header("Location: ".base_url('index.php/VisageLivreControler/index/signin')); // redirection vers la page de connection
+			}elseif(isset($_POST['publier'])){
+                
+				$data['content'] = 'home';
+				$this->view = 'template';
+				$this->Users_model->addPost($_POST['content'], $_SESSION['user']['nickname']);
+				//header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de connection
 			}else{
                 $data['content'] = 'home';
                 $this->view = 'template';

@@ -47,7 +47,6 @@ class Users_model extends CI_Model
 			$_SESSION['user']['email'] = $tab[0]['email'];
 		}
 
-		$connection = true;
 		return $connection;
 	}
 
@@ -65,17 +64,38 @@ class Users_model extends CI_Model
 
 
 
-	public function getCommentsByPost($idPost){
+	public function getPostByUser($nickname){
 
-		$sql = 'SELECT * FROM visagelivre._comment WHERE ref = ?';
+		$sql = 'SELECT * FROM post NATURAL JOIN visagelivre._user WHERE nickname = ?';
+
+		$query = $this->db->query($sql, array($nickname));
+
+		$dataReturned = $this->db->query->result_array();
+
+		return $dataReturned;
+	}
+    
+    
+	public function getCommentByIdPost($idPost){
+
+		$sql = 'SELECT commentaires(?);';
 
 		$query = $this->db->query($sql, array($idPost));
 
-		$comments = $this->db->query->result_array();
+		$dataReturned = $this->db->query->result_array();
 
+		return $dataReturned;
+	}
+    
+    
+    
+    
+    
+    public function addPost($content, $nickname){
 
-		return $comments;
+		$sql = 'INSERT INTO post (content, auteur) VALUES (?, ?)';
 
+		$query = $this->db->query($sql, array($content, $nickname));
 	}
 
 }
