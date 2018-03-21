@@ -47,7 +47,7 @@ DECLARE
 	numidcom INTEGER;
 BEGIN
     	INSERT INTO visagelivre._document(content, auteur) VALUES (NEW.content, NEW.auteur) RETURNING iddoc INTO numidcom;
-	INSERT INTO visagelivre._comment (iddoc, ref) VALUES (NEW.iddoc, numidcom);
+	INSERT INTO visagelivre._comment (ref, iddoc) VALUES (NEW.ref, numidcom);
 	RETURN NEW;
 END;
 $update_comment$ LANGUAGE "plpgsql";

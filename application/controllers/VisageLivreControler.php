@@ -46,8 +46,14 @@ class VisageLivreControler extends CI_Controller {
                 
 				$data['content'] = 'home';
 				$this->view = 'template';
-				$this->Users_model->addPost($_POST['content'], $_SESSION['user']['nickname']);
-				//header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de connection
+				$this->Users_model->addPost($_POST['inputPost'], $_SESSION['user']['nickname']);
+				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
+			}elseif(isset($_POST['publier'])){
+                
+				$data['content'] = 'home';
+				$this->view = 'template';
+				$this->Users_model->addComment($_POST['inputComment'], $_SESSION['user']['nickname'], $_POST['idRef']);
+				//header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}else{
                 $data['content'] = 'home';
                 $this->view = 'template';

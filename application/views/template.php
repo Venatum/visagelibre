@@ -58,7 +58,7 @@
     
     </section>
 
-    <footer class="bg-dark">
+    <footer class="bg-dark footer sticky-bottom">
         <div class="mx-auto d-flex justify-content-center">
             <p class="">© Copyright VisageLivre 2018 | <a href="#">Mentions légales</a></p>
         </div>
