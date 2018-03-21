@@ -53,6 +53,9 @@
             <button type="button" class="btn btn-primary" onclick="displayComment(this);">
                 <i class="far fa-comment"></i> &nbsp;Commenter
             </button>
+            <button type="button" class="btn btn-danger float-right" name="deleteComment">
+                Supprimer <i class="far fa-times-circle"></i>
+            </button>
 
             <div class="collapsed">
                 <div class="container-fluid myCard p-3">
@@ -78,7 +81,8 @@
                     <form>
                         <h5 class="h5">Exprimez-vous</h5>
                         <input contenteditable="true" placeholder="Votre commentaire..." style="margin-bottom: 1%; width: 100%"/><br>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Commenter
+                        <button type="submit" class="btn btn-primary" name="comment">
+                            <i class="fas fa-pencil-alt"></i> &nbsp;Commenter
                         </button>
                     </form>
                 </div>
