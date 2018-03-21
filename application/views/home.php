@@ -34,13 +34,14 @@
         <!--News Input-->
         <form class="container-fluid myCard p-3" method="post">
             <h5 class="h5">Exprimez-vous</h5>
-            <input contenteditable="true" placeholder="Exprimez-vous..." name="content" style="margin-bottom: 1%; width: 100%"/><br>
+            <input contenteditable="true" placeholder="Exprimez-vous..." name="inputPost" required style="margin-bottom: 1%; width: 100%"/><br>
             <button name="publier" type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier</button>
         </form>
 
         <!--News-->
         <?php //foreach ( ?? as $publication) ?>
-        <div class="container-fluid myCard p-3"><br>
+        <form class="container-fluid myCard p-3"><br>
+            <input name="idRef" style="display: none" value="iddoc"/>
             <div style="text-align: center; margin: -5% 0 -5% 0;">
                 <span class="float-right">create_date</span><br/>
                 <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
@@ -78,16 +79,16 @@
                     <?php //endforeach; ?>
 
                     <!-- Comment input-->
-                    <form>
+<!--                    <form>-->
                         <h5 class="h5">Exprimez-vous</h5>
-                        <input contenteditable="true" placeholder="Votre commentaire..." style="margin-bottom: 1%; width: 100%"/><br>
+                        <input contenteditable="true" name="inputComment" placeholder="Votre commentaire..." required style="margin-bottom: 1%; width: 100%"/><br>
                         <button type="submit" class="btn btn-primary" name="comment">
                             <i class="fas fa-pencil-alt"></i> &nbsp;Commenter
                         </button>
-                    </form>
+<!--                    </form>-->
                 </div>
             </div>
-        </div>
+        </form>
         <?php //endforeach; ?>
     </div>
 
@@ -111,14 +112,6 @@
                 <h4>Ajouter des amis</h4>
                 <div class="container-fluid m-auto row">
                     <h5 class="m-auto">Mouloud</h5>
-                    <button type="button" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
-                </div>
-                <div class="container-fluid m-auto row">
-                    <h5 class="m-auto">Yolande</h5>
-                    <button type="button" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
-                </div>
-                <div class="container-fluid m-auto row">
-                    <h5 class="m-auto">Gwendal</h5>
                     <button type="button" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
