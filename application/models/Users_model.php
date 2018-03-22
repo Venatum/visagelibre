@@ -70,7 +70,7 @@ class Users_model extends CI_Model
 
 		$query = $this->db->query($sql, array($nickname));
 
-		$dataReturned = $this->db->query->result_array();
+		$dataReturned = $query->result_array();
 
 		return $dataReturned;
 	}
@@ -82,7 +82,7 @@ class Users_model extends CI_Model
 
 		$query = $this->db->query($sql, array($idPost));
 
-		$dataReturned = $this->db->query->result_array();
+		$dataReturned = $query->result_array();
 
 		return $dataReturned;
 	}
@@ -107,6 +107,97 @@ class Users_model extends CI_Model
 
 		$query = $this->db->query($sql, array($content, $nickname, $ref));
 	}
+    
+    
+    
+    
+    
+	public function getFriends($nickname){
+
+		$sql = 'SELECT * FROM visagelivre._friendof WHERE nickname = ?';
+
+		$query = $this->db->query($sql, array($nickname));
+
+		$dataReturned = $query->result_array();
+
+		return $dataReturned;
+	}
+    
+    
+       
+	public function getFriendsRequestToUser($nickname){
+
+		$sql = 'SELECT * FROM visagelivre._friendrequest WHERE target = ?';
+
+		$query = $this->db->query($sql, array($nickname));
+
+		$dataReturned = $query->result_array();
+
+		return $dataReturned;
+	}
+    
+    
+        
+	public function addFriendsRequestToUser($nickname, $target){
+
+		$sql = 'INSERT INTO visagelivre._friendrequest (nickname, target) VALUES (?, ?) ';
+
+		$query = $this->db->query($sql, array($nickname, $target));
+
+		$dataReturned = $query->result_array();
+
+		return $dataReturned;
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+       
+	public function getFriendsRequestFromUser($nickname){
+
+		$sql = 'SELECT * FROM visagelivre._friendrequest WHERE nickname = ?';
+
+		$query = $this->db->query($sql, array($nickname));
+
+		$dataReturned = $query->result_array();
+
+		return $dataReturned;
+	}
+    
+    
+    
+           
+	public function getUnknownUser($nickname){
+
+		$sql = 'SELECT * FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname EXCEPT (SELECT * FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname WHERE target = ? OR visagelivre._user.nickname != ? OR friend != ?);';
+
+		$query = $this->db->query($sql, array($nickname, $nickname, $nickname));
+
+		$dataReturned = $query->result_array();
+
+		return $dataReturned;
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }

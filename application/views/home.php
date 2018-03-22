@@ -18,7 +18,9 @@
             <hr>
             <div>
                 <h4>Mes amis</h4>
-                <?php foreach ($friend as getFriends($_SESSION['user']['nickname'])) { ?>
+                <?php 
+                $tab = $this->Users_model->getFriends($_SESSION['user']['nickname']);
+                foreach ($tab as $friend) { ?>
                     <form class="container-fluid m-auto row">
                         <h5 class="m-auto"><?php echo $friend['nickname'] ?></h5>
                         <button type="submit" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend"
@@ -99,7 +101,9 @@
             <h3>Amis</h3><hr>
             <div>
                 <h4>Demande d'amis</h4>
-                <?php foreach ( $friendRequest as getFriendsRequestToUser($_SESSION['user']['nickname'])) { ?>
+                <?php 
+            $tab = $this->Users_model->getFriendsRequestToUser($_SESSION['user']['nickname']);
+            foreach ( $tab as $friendRequest ) { ?>
                 <form class="container-fluid m-auto row">
                     <h5 class="m-auto"><?php echo $friendRequest['nickname'] ?></h5>
                     <button type="submit" class="btn btn-outline-success mx-1" title="Accepter"><i class="far fa-check-circle"></i></button>
@@ -110,7 +114,9 @@
             <hr>
             <div>
                 <h4>Ajouter des amis</h4>
-                <?php foreach ($unknown as getUnknownUser($_SESSION['user']['nickname'])) { ?>
+                <?php 
+                $tab = $this->Users_model->getUnknownUser($_SESSION['user']['nickname']);
+                foreach ($tab as $unknown ) { ?>
                 <form class="container-fluid m-auto row">
                     <h5 class="m-auto"><?php echo $unknown['nickname'] ?></h5>
                     <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
