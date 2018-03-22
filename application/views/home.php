@@ -18,13 +18,14 @@
             <hr>
             <div>
                 <h4>Mes amis</h4>
-                <?php //foreach ( ?? as $friend) ?>
-                <div class="container-fluid m-auto row">
-                    <h5 class="m-auto">Toto</h5>
-                    <button type="button" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend">
-                        <i class="far fa-times-circle"></i></button>
-                </div>
-                <?php //endforeach; ?>
+                <?php foreach ($friend as getFriends($_SESSION['user']['nickname'])) { ?>
+                    <form class="container-fluid m-auto row">
+                        <h5 class="m-auto"><?php echo $friend['nickname'] ?></h5>
+                        <button type="submit" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend"
+                                value="<?php echo $friend['nickname'] ?>">
+                            <i class="far fa-times-circle"></i></button>
+                    </form>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -95,25 +96,26 @@
     <!--Friends-->
     <div class="col-md-2 mx-auto myCard p-1" id="friends">
         <div class="container-fluid text-center">
-            <h3>Amis</h3>
-            <hr>
+            <h3>Amis</h3><hr>
             <div>
                 <h4>Demande d'amis</h4>
-                <?php //foreach ( ?? as $friendRequest): ?>
-                <div class="container-fluid m-auto row">
-                    <h5 class="m-auto">Toto</h5>
-                    <button type="button" class="btn btn-outline-success mx-1" title="Accepter"><i class="far fa-check-circle"></i></button>
-                    <button type="button" class="btn btn-outline-danger" title="Décliner"><i class="far fa-times-circle"></i></button>
-                </div>
-                <?php //endforeach; ?>
+                <?php foreach ( $friendRequest as getFriendsRequestToUser($_SESSION['user']['nickname'])) { ?>
+                <form class="container-fluid m-auto row">
+                    <h5 class="m-auto"><?php echo $friendRequest['nickname'] ?></h5>
+                    <button type="submit" class="btn btn-outline-success mx-1" title="Accepter"><i class="far fa-check-circle"></i></button>
+                    <button type="submit" class="btn btn-outline-danger" title="Décliner"><i class="far fa-times-circle"></i></button>
+                </form>
+                <?php } ?>
             </div>
             <hr>
             <div>
                 <h4>Ajouter des amis</h4>
-                <div class="container-fluid m-auto row">
-                    <h5 class="m-auto">Mouloud</h5>
-                    <button type="button" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
-                </div>
+                <?php foreach ($unknown as getUnknownUser($_SESSION['user']['nickname'])) { ?>
+                <form class="container-fluid m-auto row">
+                    <h5 class="m-auto"><?php echo $unknown['nickname'] ?></h5>
+                    <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
+                </form>
+                <?php } ?>
             </div>
         </div>
     </div>
