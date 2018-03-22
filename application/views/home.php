@@ -52,7 +52,7 @@
         <?php
         $tab = $this->Users_model->getPostByUser($_SESSION['user']['nickname']);
         foreach ($tab as $post) { ?>
-            <form class="container-fluid myCard p-3"><br>
+            <form class="container-fluid myCard p-3" method="post"><br>
                 <input name="idRef" style="display: none" value="<?php echo $post['iddoc'] ?>"/>
                 <div style="text-align: center; margin: -5% 0 -5% 0;">
                     <span class="float-right"><?php echo $post['create_date'] ?></span><br/>
@@ -115,7 +115,7 @@
                 <?php 
             $tab = $this->Users_model->getFriendsRequestToUser($_SESSION['user']['nickname']);
             foreach ( $tab as $friendRequest ) { ?>
-                <form class="container-fluid m-auto row">
+                <form class="container-fluid m-auto row" method="post">
                     <h5 class="m-auto"><?php echo $friendRequest['nickname'] ?></h5>
                     <button type="submit" class="btn btn-outline-success mx-1" title="Accepter"><i class="far fa-check-circle"></i></button>
                     <button type="submit" class="btn btn-outline-danger" title="Décliner"><i class="far fa-times-circle"></i></button>
@@ -128,7 +128,7 @@
                 <?php 
                 $tab = $this->Users_model->getUnknownUser($_SESSION['user']['nickname']);
                 foreach ($tab as $unknown ) { ?>
-                <form class="container-fluid m-auto row">
+                <form class="container-fluid m-auto row" method="post">
                     <h5 class="m-auto"><?php echo ($unknown['nickname'] == $_SESSION['user']['nickname'] ? $unknown['friend'] : $unknown['nickname'])?></h5>
                     <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
                 </form>
