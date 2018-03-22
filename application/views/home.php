@@ -123,11 +123,11 @@
                 foreach ($tab as $friendRequest) { ?>
                     <form class="container-fluid m-auto row" method="post">
                         <h5 class="m-auto"><?php echo $friendRequest['nickname'] ?></h5>
-                        <button type="submit" class="btn btn-outline-success mx-1" title="Accepter"
+                        <button type="submit" class="btn btn-outline-success mx-1" title="Accepter" name="confirmRequest"
                             <?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname']) ?>>
                             <i class="far fa-check-circle"></i>
                         </button>
-                        <button type="submit" class="btn btn-outline-danger" title="Décliner"
+                        <button type="submit" class="btn btn-outline-danger" title="Décliner" name="denyRequest"
                             <?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname']) ?> >
                             <i class="far fa-times-circle"></i>
                         </button>
@@ -142,7 +142,7 @@
                 foreach ($tab as $unknown) { ?>
                     <form class="container-fluid m-auto row" method="post">
                         <h5 class="m-auto"><?php echo($unknown['nickname'] == $_SESSION['user']['nickname'] ? $unknown['friend'] : $unknown['nickname']) ?></h5>
-                        <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter"
+                        <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter" name="addFriend"
                             value="<?php echo($unknown['nickname'] == $_SESSION['user']['nickname'] ? $unknown['friend'] : $unknown['nickname']) ?>">
                             <i class="fas fa-plus"></i></button>
                     </form>

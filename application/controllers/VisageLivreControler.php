@@ -55,7 +55,21 @@ class VisageLivreControler extends CI_Controller {
 				$this->view = 'template';
                 echo($_POST['inputComment'].$_SESSION['user']['nickname'].$_POST['idRef']);
 				$this->Users_model->addComment($_POST['inputComment'], $_SESSION['user']['nickname'], $_POST['idRef']);
-				//header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
+				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
+			}elseif(isset($_POST['addFriend'])){
+
+				$data['content'] = 'home';
+				$this->view = 'template';
+                
+				$this->Users_model->addFriend($_SESSION['user']['nickname'], $_POST['addFriend']);
+				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
+			}elseif(isset($_POST['deleteFriend'])){
+
+				$data['content'] = 'home';
+				$this->view = 'template';
+
+                $this->Users_model->deleteFriend($_SESSION['user']['nickname'], $_POST['deleteFriend']);
+				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}else{
                 $data['content'] = 'home';
                 $this->view = 'template';

@@ -154,7 +154,7 @@ class Users_model extends CI_Model
     
     
         
-	public function addFriendsRequestToUser($nickname, $target){
+	public function addFriendsRequest($nickname, $target){
 
 		$sql = 'INSERT INTO visagelivre._friendrequest (nickname, target) VALUES (?, ?) ';
 
@@ -166,6 +166,19 @@ class Users_model extends CI_Model
 	}
     
     
+    
+    
+         
+	public function confirmFriendsRequest($nickname, $target){
+
+		$sql = 'INSERT INTO visagelivre._friendrequest (nickname, target) VALUES (?, ?) ';
+
+		$query = $this->db->query($sql, array($nickname, $target));
+
+		$dataReturned = $query->result_array();
+
+		return $dataReturned;
+	}
     
     
     
