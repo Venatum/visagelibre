@@ -52,6 +52,7 @@ class VisageLivreControler extends CI_Controller {
                 
 				$data['content'] = 'home';
 				$this->view = 'template';
+                echo($_POST['inputComment'].$_SESSION['user']['nickname'].$_POST['idRef']);
 				$this->Users_model->addComment($_POST['inputComment'], $_SESSION['user']['nickname'], $_POST['idRef']);
 				//header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}else{
@@ -110,8 +111,8 @@ class VisageLivreControler extends CI_Controller {
         
         $this->load->vars($data);
         $this->load->view($this->view);
-        print_r($_POST);
-        print_r($_SESSION);
+//        print_r($_POST);
+//        print_r($_SESSION);
     }
     
     

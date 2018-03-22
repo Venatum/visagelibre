@@ -65,20 +65,26 @@ class Users_model extends CI_Model
 
 
 	public function getPostByUser($nickname){
+        $sql = 'SELECT * FROM visagelivre.post WHERE auteur = ? ORDER BY create_date';
 
-		$sql = 'SELECT * FROM post NATURAL JOIN visagelivre._user WHERE nickname = ?';
+        $query = $this->db->query($sql, array($nickname));
+        $dataReturned = $query->result_array();
+        
+        $amis = $this->getFriends($nickname);
+        foreach($amis as $ami){
+            $sql = 'SELECT * FROM visagelivre.post WHERE auteur = ? ORDER BY create_date';
 
-		$query = $this->db->query($sql, array($nickname));
+            $query = $this->db->query($sql, array((($ami['nickname'] == $_SESSION['user']['nickname']) ? $ami['friend'] : $ami['nickname'])));
 
-		$dataReturned = $query->result_array();
-
+            $dataReturned = array_merge($dataReturned, $query->result_array());
+        }
 		return $dataReturned;
 	}
     
     
 	public function getCommentByIdPost($idPost){
 
-		$sql = 'SELECT commentaires(?);';
+		$sql = 'SELECT * FROM visagelivre.vu_comment WHERE ref = ?;';
 
 		$query = $this->db->query($sql, array($idPost));
 
@@ -88,12 +94,23 @@ class Users_model extends CI_Model
 	}
     
     
+	public function getCommentById($iddoc){
+
+		$sql = 'SELECT * from visagelivre.vu_comment;';
+
+		$query = $this->db->query($sql, array($iddoc));
+
+		$dataReturned = $query->result_array();
+
+		return $dataReturned;
+	}
+    
     
     
     
     public function addPost($content, $nickname){
 
-		$sql = 'INSERT INTO post (content, auteur) VALUES (?, ?)';
+		$sql = 'INSERT INTO visagelivre.post (content, auteur) VALUES (?, ?)';
 
 		$query = $this->db->query($sql, array($content, $nickname));
 	}
@@ -103,7 +120,7 @@ class Users_model extends CI_Model
     
     public function addComment($content, $nickname, $ref){
 
-		$sql = 'INSERT INTO vu_comment (content, auteur, ref) VALUES (?, ?, ?)';
+		$sql = 'INSERT INTO visagelivre.vu_comment (content, auteur, ref) VALUES (?, ?, ?)';
 
 		$query = $this->db->query($sql, array($content, $nickname, $ref));
 	}
@@ -173,9 +190,9 @@ class Users_model extends CI_Model
            
 	public function getUnknownUser($nickname){
 
-		$sql = 'SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname EXCEPT (SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname WHERE target = ? OR visagelivre._user.nickname = ? OR friend = ?);';
+		$sql = 'SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname EXCEPT (SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname WHERE target = ? OR visagelivre._user.nickname = ? OR visagelivre._friendrequest.nickname = ? OR friend = ?);';
 
-		$query = $this->db->query($sql, array($nickname, $nickname, $nickname));
+		$query = $this->db->query($sql, array($nickname, $nickname, $nickname, $nickname));
 
 		$dataReturned = $query->result_array();
 
