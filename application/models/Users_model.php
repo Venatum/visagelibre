@@ -121,7 +121,6 @@ class Users_model extends CI_Model
     public function addComment($content, $nickname, $ref){
 
 		$sql = 'INSERT INTO visagelivre.vu_comment (content, auteur, ref) VALUES (?, ?, ?)';
-
 		$query = $this->db->query($sql, array($content, $nickname, $ref));
 	}
     
