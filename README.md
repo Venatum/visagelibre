@@ -12,7 +12,7 @@ You need a:
 
 ### Installing
 
-1. Add [dump](todo) SQL script to your own database.
+1. Add [dump](dump.backup) SQL script to your own database.
 2. Add your own database.php or use the template to configure your database connection.
 3. Run & enjoy :+1:
 
