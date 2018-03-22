@@ -17,7 +17,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand offset-2" href="<?php echo base_url('application/views/home.php') ?>">
+        <a class="navbar-brand offset-2" href="<?php echo base_url('VisageLivreControler/index/home') ?>">
             <i class="far fa-smile"></i>
             VisageLivre
         </a>
