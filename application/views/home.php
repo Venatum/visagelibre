@@ -40,57 +40,56 @@
         </form>
 
         <!--News-->
-        <?php //foreach ( ?? as $publication) ?>
-        <form class="container-fluid myCard p-3"><br>
-            <input name="idRef" style="display: none" value="iddoc"/>
-            <div style="text-align: center; margin: -5% 0 -5% 0;">
-                <span class="float-right">create_date</span><br/>
-                <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
-                <h4>Nickname</h4><br>
-            </div>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.</p>
-            <button type="button" class="btn btn-primary" onclick="displayComment(this);">
-                <i class="far fa-comment"></i> &nbsp;Commenter
-            </button>
-            <button type="button" class="btn btn-danger float-right" name="deleteComment">
-                Supprimer <i class="far fa-times-circle"></i>
-            </button>
+        <?php
+        $tab = $this->Users_model->getPostByUser($_SESSION['user']['nickname']);
+        foreach ($tab as $post) { ?>
+            <form class="container-fluid myCard p-3"><br>
+                <input name="idRef" style="display: none" value="<?php echo $post['iddoc'] ?>"/>
+                <div style="text-align: center; margin: -5% 0 -5% 0;">
+                    <span class="float-right"><?php echo $post['create_date'] ?></span><br/>
+                    <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Nickname"
+                         class="avatar" style="width: 60px;height: 60px">
+                    <h4><?php echo $post['nickname'] ?></h4><br>
+                </div>
+                <hr>
+                <p><?php echo $post['content'] ?></p>
+                <button type="button" class="btn btn-primary" onclick="displayComment(this);">
+                    <i class="far fa-comment"></i> &nbsp;Commenter
+                </button>
+                <button type="button" class="btn btn-danger float-right" name="deletePost">
+                    Supprimer <i class="far fa-times-circle"></i>
+                </button>
 
-            <div class="collapsed">
-                <div class="container-fluid myCard p-3">
+                <div class="collapsed">
+                    <div class="container-fluid myCard p-3">
 
-                    <!--Comment-->
-                    <?php //foreach ( ?? as $comment) ?>
-                    <div class="container-fluid">
-                        <div class="col-md-2" style="margin: 0 0 -10% 0;">
-                            <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Nickname" class="avatar" style="width: 60px;height: 60px">
-                            <h6>Nickname</h6>
-                        </div>
-                        <p class="col-md-9 m-auto text-justify">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <span class="float-right text-muted">create_date</span><br>
-                        <hr>
-                    </div>
-                    <?php //endforeach; ?>
+                        <!--Comment-->
+                        <?php
+                        $comments = $this->Users_model->getCommentByIdPost($post['iddoc']);
+                        foreach ($comments as $data) { ?>
+                            <div class="container-fluid">
+                                <div class="col-md-2" style="margin: 0 0 -10% 0;">
+                                    <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>"
+                                         alt="Nickname" class="avatar" style="width: 60px;height: 60px">
+                                    <h6><?php echo $data['nickname'] ?></h6>
+                                </div>
+                                <p class="col-md-9 m-auto text-justify"><?php echo $data['content'] ?></p>
+                                <span class="float-right text-muted"><?php echo $data['create_date'] ?></span><br>
+                                <hr>
+                            </div>
+                        <?php } ?>
 
-                    <!-- Comment input-->
-<!--                    <form>-->
+                        <!-- Comment input-->
                         <h5 class="h5">Exprimez-vous</h5>
-                        <input contenteditable="true" name="inputComment" placeholder="Votre commentaire..." required style="margin-bottom: 1%; width: 100%"/><br>
+                        <input contenteditable="true" name="inputComment" placeholder="Votre commentaire..." required
+                               style="margin-bottom: 1%; width: 100%"/><br>
                         <button type="submit" class="btn btn-primary" name="comment">
                             <i class="fas fa-pencil-alt"></i> &nbsp;Commenter
                         </button>
-<!--                    </form>-->
+                    </div>
                 </div>
-            </div>
-        </form>
-        <?php //endforeach; ?>
+            </form>
+        <?php } ?>
     </div>
 
     <!--Friends-->
