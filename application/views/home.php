@@ -48,7 +48,7 @@
         <form class="container-fluid myCard p-3" method="post">
             <h5 class="h5">Exprimez-vous</h5>
             <input contenteditable="true" placeholder="Exprimez-vous..." name="inputPost" required
-                   style="margin-bottom: 1%; width: 100%"/><br>
+                   maxlength="128" style="margin-bottom: 1%; width: 100%"/><br>
             <button name="publier" type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier
             </button>
         </form>
@@ -101,7 +101,7 @@
                         <!-- Comment input-->
                         <h5 class="h5">Exprimez-vous</h5>
                         <input contenteditable="true" name="inputComment" placeholder="Votre commentaire..." required
-                               style="margin-bottom: 1%; width: 100%"/><br>
+                               maxlength="128" style="margin-bottom: 1%; width: 100%"/><br>
                         <button type="submit" class="btn btn-primary" name="comment">
                             <i class="fas fa-pencil-alt"></i> &nbsp;Commenter
                         </button>
