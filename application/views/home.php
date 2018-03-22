@@ -1,10 +1,9 @@
 <section class="container-fluid row">
     <!-- Profile -->
-    <div id="profile" class="col-md-2 myCard">
+    <div class="col-md-2 mx-auto myCard p-1" id="profile">
         <div class="container-fluid text-center">
             <h4>Mon Profile</h4>
-            <p><img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Avatar" class="avatar">
-            </p>
+            <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>" alt="Avatar" class="avatar">
             <hr>
             <p><i class="fas fa-at"></i> <?php echo $_SESSION['user']['nickname'] ?> </p>
             <p><i class="fas fa-envelope"></i> <?php echo $_SESSION['user']['email'] ?> </p>
@@ -96,7 +95,7 @@
     </div>
 
     <!--Friends-->
-    <div class="col-md-2 mx-auto myCard p-1" id="friends">
+    <div class="col-md-2 mx-auto myCard p-1 friends">
         <div class="container-fluid text-center">
             <h3>Amis</h3><hr>
             <div>

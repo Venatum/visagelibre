@@ -26,26 +26,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse offset-6" id="navbarSupportedContent">
-            <!--<form class="form-inline offset-3">-->
-            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-            <!--<button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>-->
-            <!--</form>-->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-					<!-- <a class="nav-link" href=" --> <?php echo anchor('VisageLivreControler/index/home', "Accueil"); ?>
-					<!-- title="Accueil">Accueil</a> -->
+					<?php echo anchor('VisageLivreControler/index/home', "Accueil"); ?>
                 </li>
                 <li class="nav-item">
                     <?php echo anchor('VisageLivreControler/index/signout', "Se déconnecter"); ?>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('application/views/register.php') ?>" title="S'inscrire">S'inscrire</a>
-                </li>
-                <!--<li class="nav-item">-->
-                <!--<button class="dropdown-item">-->
-                <!--<i class="far fa-bell fa-2x"></i>-->
-                <!--</button>-->
-                <!--</li>-->
             </ul>
         </div>
     </nav>
