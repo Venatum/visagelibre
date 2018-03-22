@@ -1,12 +1,14 @@
 <script>
-        function displayParam(e) {
-            $(e).next().toggle("slow", function () {});
-        }
+    function displayParam(e) {
+        $(e).next().toggle("slow", function () {
+        });
+    }
 
-        function displayComment(e) {
-            $(e).next().next().toggle("slow", function () {});
-        }
-    </script>
+    function displayComment(e) {
+        $(e).next().next().toggle("slow", function () {
+        });
+    }
+</script>
 <section class="container-fluid row">
     <!-- Profile -->
     <div class="col-md-2 mx-auto myCard p-1" id="profile">
@@ -26,12 +28,13 @@
             <hr>
             <div>
                 <h4>Mes amis</h4>
-                <?php 
+                <?php
                 $tab = $this->Users_model->getFriends($_SESSION['user']['nickname']);
                 foreach ($tab as $friend) { ?>
                     <form class="container-fluid m-auto row">
-                        <h5 class="m-auto"><?php echo ($friend['nickname'] == $_SESSION['user']['nickname'] ? $friend['friend'] : $friend['nickname'])?></h5>                        <button type="submit" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend"
-                                value="<?php echo $friend['nickname'] ?>">
+                        <h5 class="m-auto"><?php echo($friend['nickname'] == $_SESSION['user']['nickname'] ? $friend['friend'] : $friend['nickname']) ?></h5>
+                        <button type="submit" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend"
+                                value="<?php echo($friend['nickname'] == $_SESSION['user']['nickname'] ? $friend['friend'] : $friend['nickname']) ?>">
                             <i class="far fa-times-circle"></i></button>
                     </form>
                 <?php } ?>
@@ -44,8 +47,10 @@
         <!--News Input-->
         <form class="container-fluid myCard p-3" method="post">
             <h5 class="h5">Exprimez-vous</h5>
-            <input contenteditable="true" placeholder="Exprimez-vous..." name="inputPost" required style="margin-bottom: 1%; width: 100%"/><br>
-            <button name="publier" type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier</button>
+            <input contenteditable="true" placeholder="Exprimez-vous..." name="inputPost" required
+                   style="margin-bottom: 1%; width: 100%"/><br>
+            <button name="publier" type="submit" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> &nbsp;Publier
+            </button>
         </form>
 
         <!--News-->
@@ -66,7 +71,7 @@
                     <i class="far fa-comment"></i> &nbsp;Commenter
                 </button>
                 <button type="button" class="btn btn-danger float-right" name="deletePost"
-                <?php if ($post['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
+                    <?php if ($post['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
                     Supprimer <i class="far fa-times-circle"></i>
                 </button>
 
@@ -80,7 +85,7 @@
                             <div class="container-fluid">
                                 <button type="button" class="btn btn-outline-danger float-right" name="deleteComment"
                                         value="<?php echo $data['iddoc'] ?>"
-                                        <?php if ($data['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
+                                    <?php if ($data['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
                                     <i class="far fa-times-circle"></i></button>
                                 <div class="col-md-2" style="margin: 0 0 -75px 0;">
                                     <img src=" <?php echo base_url('application/static/images/avatar3.png') ?>"
@@ -109,29 +114,38 @@
     <!--Friends-->
     <div class="col-md-2 mx-auto myCard p-1 friends">
         <div class="container-fluid text-center">
-            <h3>Amis</h3><hr>
+            <h3>Amis</h3>
+            <hr>
             <div>
                 <h4>Demande d'amis</h4>
-                <?php 
-            $tab = $this->Users_model->getFriendsRequestToUser($_SESSION['user']['nickname']);
-            foreach ( $tab as $friendRequest ) { ?>
-                <form class="container-fluid m-auto row" method="post">
-                    <h5 class="m-auto"><?php echo $friendRequest['nickname'] ?></h5>
-                    <button type="submit" class="btn btn-outline-success mx-1" title="Accepter"><i class="far fa-check-circle"></i></button>
-                    <button type="submit" class="btn btn-outline-danger" title="Décliner"><i class="far fa-times-circle"></i></button>
-                </form>
+                <?php
+                $tab = $this->Users_model->getFriendsRequestToUser($_SESSION['user']['nickname']);
+                foreach ($tab as $friendRequest) { ?>
+                    <form class="container-fluid m-auto row" method="post">
+                        <h5 class="m-auto"><?php echo $friendRequest['nickname'] ?></h5>
+                        <button type="submit" class="btn btn-outline-success mx-1" title="Accepter"
+                            <?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname']) ?>>
+                            <i class="far fa-check-circle"></i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-danger" title="Décliner"
+                            <?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname']) ?> >
+                            <i class="far fa-times-circle"></i>
+                        </button>
+                    </form>
                 <?php } ?>
             </div>
             <hr>
             <div>
                 <h4>Ajouter des amis</h4>
-                <?php 
+                <?php
                 $tab = $this->Users_model->getUnknownUser($_SESSION['user']['nickname']);
-                foreach ($tab as $unknown ) { ?>
-                <form class="container-fluid m-auto row" method="post">
-                    <h5 class="m-auto"><?php echo ($unknown['nickname'] == $_SESSION['user']['nickname'] ? $unknown['friend'] : $unknown['nickname'])?></h5>
-                    <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
-                </form>
+                foreach ($tab as $unknown) { ?>
+                    <form class="container-fluid m-auto row" method="post">
+                        <h5 class="m-auto"><?php echo($unknown['nickname'] == $_SESSION['user']['nickname'] ? $unknown['friend'] : $unknown['nickname']) ?></h5>
+                        <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter"
+                            value="<?php echo($unknown['nickname'] == $_SESSION['user']['nickname'] ? $unknown['friend'] : $unknown['nickname']) ?>">
+                            <i class="fas fa-plus"></i></button>
+                    </form>
                 <?php } ?>
             </div>
         </div>
@@ -139,11 +153,13 @@
 
     <script>
         function displayParam(e) {
-            $(e).next().toggle("slow", function () {});
+            $(e).next().toggle("slow", function () {
+            });
         }
 
         function displayComment(e) {
-            $(e).next().next().toggle("slow", function () {});
+            $(e).next().next().toggle("slow", function () {
+            });
         }
     </script>
 </section>
