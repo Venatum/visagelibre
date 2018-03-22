@@ -114,9 +114,9 @@ class Users_model extends CI_Model
     
 	public function getFriends($nickname){
 
-		$sql = 'SELECT * FROM visagelivre._friendof WHERE nickname = ?';
+		$sql = 'SELECT DISTINCT nickname, friend FROM visagelivre._friendof WHERE nickname = ? OR friend = ? ';
 
-		$query = $this->db->query($sql, array($nickname));
+		$query = $this->db->query($sql, array($nickname, $nickname));
 
 		$dataReturned = $query->result_array();
 
@@ -173,7 +173,7 @@ class Users_model extends CI_Model
            
 	public function getUnknownUser($nickname){
 
-		$sql = 'SELECT * FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname EXCEPT (SELECT * FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname WHERE target = ? OR visagelivre._user.nickname != ? OR friend != ?);';
+		$sql = 'SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname EXCEPT (SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname WHERE target = ? OR visagelivre._user.nickname = ? OR friend = ?);';
 
 		$query = $this->db->query($sql, array($nickname, $nickname, $nickname));
 

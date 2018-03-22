@@ -21,8 +21,7 @@
                 $tab = $this->Users_model->getFriends($_SESSION['user']['nickname']);
                 foreach ($tab as $friend) { ?>
                     <form class="container-fluid m-auto row">
-                        <h5 class="m-auto"><?php echo $friend['nickname'] ?></h5>
-                        <button type="submit" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend"
+                        <h5 class="m-auto"><?php echo ($friend['nickname'] == $_SESSION['user']['nickname'] ? $friend['friend'] : $friend['nickname'])?></h5>                        <button type="submit" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend"
                                 value="<?php echo $friend['nickname'] ?>">
                             <i class="far fa-times-circle"></i></button>
                     </form>
@@ -117,7 +116,7 @@
                 $tab = $this->Users_model->getUnknownUser($_SESSION['user']['nickname']);
                 foreach ($tab as $unknown ) { ?>
                 <form class="container-fluid m-auto row">
-                    <h5 class="m-auto"><?php echo $unknown['nickname'] ?></h5>
+                    <h5 class="m-auto"><?php echo ($unknown['nickname'] == $_SESSION['user']['nickname'] ? $unknown['friend'] : $unknown['nickname'])?></h5>
                     <button type="submit" class="btn btn-outline-success mx-1" title="Ajouter"><i class="fas fa-plus"></i></button>
                 </form>
                 <?php } ?>
