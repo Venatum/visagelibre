@@ -70,6 +70,14 @@ class VisageLivreControler extends CI_Controller {
 
                 $this->Users_model->deleteFriend($_SESSION['user']['nickname'], $_POST['deleteFriend']);
 				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
+			}elseif(isset($_POST['deleteUser'])){
+
+				$data['content'] = 'signin';
+				$this->view = 'template_log';
+
+                $this->Users_model->deleteUser($_SESSION['user']['nickname']);
+                
+				header("Location: ".base_url('index.php/VisageLivreControler/index/signin')); // redirection vers la page de home
 			}elseif(isset($_POST['confirmRequest'])){
 
 				$data['content'] = 'home';

@@ -22,7 +22,7 @@
                     style="margin-top: -5%">
                 <i class="fas fa-ellipsis-h"></i></button>
             <div class="collapsed m-1">
-                <button type="button" class="btn btn-danger" name="deleteUser">Supprimer votre compte</button>
+                <button type="submit" class="btn btn-danger" name="deleteUser">Supprimer votre compte</button>
             </div>
             <br>
             <hr>
@@ -31,7 +31,7 @@
                 <?php
                 $tab = $this->Users_model->getFriends($_SESSION['user']['nickname']);
                 foreach ($tab as $friend) { ?>
-                    <form class="container-fluid m-auto row">
+                    <form class="container-fluid m-auto row" method="post">
                         <h5 class="m-auto"><?php echo($friend['nickname'] == $_SESSION['user']['nickname'] ? $friend['friend'] : $friend['nickname']) ?></h5>
                         <button type="submit" class="btn btn-outline-danger" title="Supprimer" name="deleteFriend"
                                 value="<?php echo($friend['nickname'] == $_SESSION['user']['nickname'] ? $friend['friend'] : $friend['nickname']) ?>">

@@ -163,7 +163,14 @@ class Users_model extends CI_Model
 		
 	}
     
-    
+    public function deleteFriend($nickname, $friend){
+
+		$sql = 'DELETE FROM visagelivre._friendof WHERE (nickname = ? AND friend = ?) OR (nickname = ? AND friend = ?)';
+
+		$query = $this->db->query($sql, array($nickname, $friend, $nickname, $friend));
+
+		
+	}
     
     
          
@@ -184,9 +191,6 @@ class Users_model extends CI_Model
 
 		$query = $this->db->query($sql, array($nickname, $target, $target, $nickname));
 
-		$dataReturned = $query->result_array();
-
-		return $dataReturned;
 	}
     
     
@@ -205,6 +209,16 @@ class Users_model extends CI_Model
 	}
     
     
+    
+    
+    public function deleteUser($nickname){
+
+		$sql = 'DELETE FROM visagelivre._user WHERE nickname = ?';
+
+		$query = $this->db->query($sql, array($nickname));
+
+		
+	}
     
            
 	public function getUnknownUser($nickname){
