@@ -154,33 +154,40 @@ class Users_model extends CI_Model
     
     
         
-	public function addFriendsRequest($nickname, $target){
+	public function addFriend($nickname, $target){
 
 		$sql = 'INSERT INTO visagelivre._friendrequest (nickname, target) VALUES (?, ?) ';
 
 		$query = $this->db->query($sql, array($nickname, $target));
 
-		$dataReturned = $query->result_array();
-
-		return $dataReturned;
+		
 	}
     
     
     
     
          
-	public function confirmFriendsRequest($nickname, $target){
+	public function confirmFriendRequest($nickname, $target){
 
-		$sql = 'INSERT INTO visagelivre._friendrequest (nickname, target) VALUES (?, ?) ';
+		$sql = 'DELETE FROM visagelivre._friendrequest WHERE (nickname = ? AND target = ?) OR (nickname = ? AND target = ?); 
+                INSERT INTO visagelivre._friendof (nickname, friend) VALUES (?, ?) ';
 
-		$query = $this->db->query($sql, array($nickname, $target));
+		$query = $this->db->query($sql, array($nickname, $target, $target, $nickname, $nickname, $target));
+
+	}
+    
+    
+    
+    public function denyFriendRequest($nickname, $target){
+
+		$sql = 'DELETE FROM visagelivre._friendrequest WHERE (nickname = ? AND target = ?) OR (nickname = ? AND target = ?);';
+
+		$query = $this->db->query($sql, array($nickname, $target, $target, $nickname));
 
 		$dataReturned = $query->result_array();
 
 		return $dataReturned;
 	}
-    
-    
     
     
     

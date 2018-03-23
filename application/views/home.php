@@ -124,11 +124,11 @@
                     <form class="container-fluid m-auto row" method="post">
                         <h5 class="m-auto"><?php echo $friendRequest['nickname'] ?></h5>
                         <button type="submit" class="btn btn-outline-success mx-1" title="Accepter" name="confirmRequest"
-                            <?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname']) ?>>
+                            value="<?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname'])?>" >
                             <i class="far fa-check-circle"></i>
                         </button>
                         <button type="submit" class="btn btn-outline-danger" title="Décliner" name="denyRequest"
-                            <?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname']) ?> >
+                            value="<?php echo($friendRequest['nickname'] == $_SESSION['user']['nickname'] ? $friendRequest['friend'] : $friendRequest['nickname']) ?>" >
                             <i class="far fa-times-circle"></i>
                         </button>
                     </form>
