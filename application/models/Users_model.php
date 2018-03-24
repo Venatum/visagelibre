@@ -35,19 +35,21 @@ class Users_model extends CI_Model
 		$connection = true;
 
 		$sql = 'SELECT * FROM visagelivre._user WHERE pass = ? AND email = ?';
-		echo password_hash($_POST['inputPassword'], PASSWORD_DEFAULT) . $_POST['inputEmail'];
 		$query = $this->db->query($sql, array(md5($_POST['inputPassword']), $_POST['inputEmail']));
 
 		if (empty($query->result_array())) {
 			$connection = false;
-			print_r($query->result_array());
+			$_SESSION['errorSignin'] = true;
 		} else {
-			print_r($tab = $this->setUserByEmail($_POST['inputEmail']));
+			$tab = $this->setUserByEmail($_POST['inputEmail']);
 			$_SESSION['user']['nickname'] = $tab[0]['nickname'];
 			$_SESSION['user']['email'] = $tab[0]['email'];
 		}
+		$tab = $this->setUserByEmail($_POST['inputEmail']);
+		$_SESSION['user']['nickname'] = $tab[0]['nickname'];
+		$_SESSION['user']['email'] = $tab[0]['email'];
 
-		return $connection;
+		return $connection = true;
 	}
 
 

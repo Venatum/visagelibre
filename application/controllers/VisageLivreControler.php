@@ -14,6 +14,8 @@ class VisageLivreControler extends CI_Controller {
 	public function index($action = 'index')
     {
 
+		print_r($_POST);
+		print_r($_SESSION);
 
         $_SESSION['action'] = $action;
 
@@ -76,7 +78,8 @@ class VisageLivreControler extends CI_Controller {
 				$this->view = 'template_log';
 
                 $this->Users_model->deleteUser($_SESSION['user']['nickname']);
-                
+				unset($_SESSION['user']);
+				$_SESSION['mode'] = 'connection';
 				header("Location: ".base_url('index.php/VisageLivreControler/index/signin')); // redirection vers la page de home
 			}elseif(isset($_POST['confirmRequest'])){
 
@@ -148,8 +151,8 @@ class VisageLivreControler extends CI_Controller {
         
         $this->load->vars($data);
         $this->load->view($this->view);
-//        print_r($_POST);
-//        print_r($_SESSION);
+        print_r($_POST);
+        print_r($_SESSION);
     }
     
     
