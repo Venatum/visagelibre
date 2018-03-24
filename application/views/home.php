@@ -72,7 +72,7 @@
                 <button type="button" class="btn btn-primary" onclick="displayComment(this);">
                     <i class="far fa-comment"></i> &nbsp;Commenter
                 </button>
-                <button type="button" class="btn btn-danger float-right" name="deletePost"
+                <button type="button" class="btn btn-danger float-right" name="deleteDocument"
                     <?php if ($post['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
                     Supprimer <i class="far fa-times-circle"></i>
                 </button>
@@ -85,7 +85,7 @@
                         $comments = $this->Users_model->getCommentByIdPost($post['iddoc']);
                         foreach ($comments as $data) { ?>
                             <div class="container-fluid">
-                                <button type="button" class="btn btn-outline-danger float-right" name="deleteComment"
+                                <button type="button" class="btn btn-outline-danger float-right" name="deleteDocument"
                                         value="<?php echo $data['iddoc'] ?>"
                                     <?php if ($data['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
                                     <i class="far fa-times-circle"></i></button>
