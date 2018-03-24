@@ -22,7 +22,9 @@
                     style="margin-top: -5%">
                 <i class="fas fa-ellipsis-h"></i></button>
             <div class="collapsed m-1">
-                <button type="submit" class="btn btn-danger" name="deleteUser">Supprimer votre compte</button>
+                <form>
+                    <button type="submit" class="btn btn-danger" name="deleteUser">Supprimer votre compte</button>
+                </form>
             </div>
             <br>
             <hr>
