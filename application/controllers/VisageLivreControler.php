@@ -53,8 +53,8 @@ class VisageLivreControler extends CI_Controller {
 
 				$data['content'] = 'home';
 				$this->view = 'template';
-
-				$this->Users_model->addComment($_POST['inputComment'], $_SESSION['user']['nickname'], $_POST['idRef']);
+				if(!empty($_POST['inputComment']))
+					$this->Users_model->addComment($_POST['inputComment'], $_SESSION['user']['nickname'], $_POST['idRef']);
 				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}elseif(isset($_POST['addFriend'])){
 
@@ -93,12 +93,19 @@ class VisageLivreControler extends CI_Controller {
 
                 $this->Users_model->denyFriendRequest($_SESSION['user']['nickname'], $_POST['denyRequest']);
 				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
-			}elseif(isset($_POST['deleteDocument'])){
+			}elseif(isset($_POST['deletePost'])){
 
 				$data['content'] = 'home';
 				$this->view = 'template';
 
-				$this->Users_model->deleteDocument($_POST['deletePost']);
+				$this->Users_model->deleteDocument($_POST['idRef']);
+				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
+			}elseif(isset($_POST['deleteComment'])){
+
+				$data['content'] = 'home';
+				$this->view = 'template';
+
+				$this->Users_model->deleteDocument($_POST['deleteComment']);
 				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}else{
                 $data['content'] = 'home';

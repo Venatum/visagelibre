@@ -72,7 +72,8 @@
                 <button type="button" class="btn btn-primary" onclick="displayComment(this);">
                     <i class="far fa-comment"></i> &nbsp;Commenter
                 </button>
-                <button type="button" class="btn btn-danger float-right" name="deleteDocument"
+
+                <button type="submit" class="btn btn-danger float-right" name="deletePost"
                     <?php if ($post['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
                     Supprimer <i class="far fa-times-circle"></i>
                 </button>
@@ -85,7 +86,7 @@
                         $comments = $this->Users_model->getCommentByIdPost($post['iddoc']);
                         foreach ($comments as $data) { ?>
                             <div class="container-fluid">
-                                <button type="button" class="btn btn-outline-danger float-right" name="deleteDocument"
+                                <button type="submit" class="btn btn-outline-danger float-right" name="deleteComment"
                                         value="<?php echo $data['iddoc'] ?>"
                                     <?php if ($data['auteur'] != $_SESSION['user']['nickname']) echo "disabled"; ?> >
                                     <i class="far fa-times-circle"></i></button>
@@ -102,7 +103,7 @@
 
                         <!-- Comment input-->
                         <h5 class="h5">Exprimez-vous</h5>
-                        <input contenteditable="true" name="inputComment" placeholder="Votre commentaire..." required
+                        <input contenteditable="true" name="inputComment" placeholder="Votre commentaire..."
                                maxlength="128" style="margin-bottom: 1%; width: 100%"/><br>
                         <button type="submit" class="btn btn-primary" name="comment">
                             <i class="fas fa-pencil-alt"></i> &nbsp;Commenter
