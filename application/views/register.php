@@ -24,7 +24,7 @@
         <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe"  name="userPassword" required>
     </div>
     <div class="mb-2 text-left">
-        <label for="inputPassword2">Mot de passe</label>
+        <label for="inputPassword2" class="sr-only">Mot de passe</label>
         <input type="password" id="inputPassword2" class="form-control" placeholder="Mot de passe" required>
         <div class="invalid-feedback">
             Un mot de passe valide est requis.
