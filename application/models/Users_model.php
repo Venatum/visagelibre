@@ -225,9 +225,21 @@ class Users_model extends CI_Model
            
 	public function getUnknownUser($nickname){
 
-		$sql = 'SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname EXCEPT (SELECT visagelivre._user.nickname FROM visagelivre._user LEFT JOIN visagelivre._friendof on visagelivre._user.nickname = visagelivre._friendof.nickname LEFT JOIN visagelivre._friendrequest on visagelivre._friendrequest.nickname = visagelivre._friendof.nickname WHERE target = ? OR visagelivre._user.nickname = ? OR visagelivre._friendrequest.nickname = ? OR friend = ?);';
+		$sql = 'SELECT visagelivre._user.nickname
+					FROM visagelivre._user 
+					LEFT JOIN visagelivre._friendof on (visagelivre._user.nickname = visagelivre._friendof.nickname OR visagelivre._user.nickname = visagelivre._friendof.friend)
+					LEFT JOIN visagelivre._friendrequest on (visagelivre._friendrequest.nickname = visagelivre._user.nickname OR visagelivre._user.nickname = visagelivre._friendrequest.target)
+							EXCEPT (SELECT visagelivre._user.nickname
+								FROM visagelivre._user 
+								LEFT JOIN visagelivre._friendof on (visagelivre._user.nickname = visagelivre._friendof.nickname OR visagelivre._user.nickname = visagelivre._friendof.friend)
+								LEFT JOIN visagelivre._friendrequest on (visagelivre._friendrequest.nickname = visagelivre._user.nickname OR visagelivre._user.nickname = visagelivre._friendrequest.target)
+									WHERE target = ? 
+										OR visagelivre._user.nickname = ?
+										OR visagelivre._friendrequest.nickname = ?
+										OR visagelivre._friendof.nickname = ?
+										OR friend = ?);';
 
-		$query = $this->db->query($sql, array($nickname, $nickname, $nickname, $nickname));
+		$query = $this->db->query($sql, array($nickname, $nickname, $nickname, $nickname, $nickname));
 
 		$dataReturned = $query->result_array();
 
