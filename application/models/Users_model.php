@@ -171,15 +171,23 @@ class Users_model extends CI_Model
 
 		$query = $this->db->query($sql, array($nickname, $friend, $nickname, $friend));
 
-		
 	}
+
+	public function deleteDocument($iddoc){
+
+		$sql = 'DELETE FROM visagelivre._document WHERE iddoc = ?';
+
+		$query = $this->db->query($sql, array($iddoc));
+
+	}
+
     
     
          
 	public function confirmFriendRequest($nickname, $target){
 
 		$sql = 'DELETE FROM visagelivre._friendrequest WHERE (nickname = ? AND target = ?) OR (nickname = ? AND target = ?); 
-                INSERT INTO visagelivre._friendof (nickname, friend) VALUES (?, ?) ';
+                INSERT INTO visagelivre._friendof (nickname, friend) VALUES (?, ?); ';
 
 		$query = $this->db->query($sql, array($nickname, $target, $target, $nickname, $nickname, $target));
 

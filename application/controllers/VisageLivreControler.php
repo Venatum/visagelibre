@@ -14,8 +14,6 @@ class VisageLivreControler extends CI_Controller {
 	public function index($action = 'index')
     {
 
-		print_r($_POST);
-		print_r($_SESSION);
 
         $_SESSION['action'] = $action;
 
@@ -55,7 +53,7 @@ class VisageLivreControler extends CI_Controller {
 
 				$data['content'] = 'home';
 				$this->view = 'template';
-                echo($_POST['inputComment'].$_SESSION['user']['nickname'].$_POST['idRef']);
+
 				$this->Users_model->addComment($_POST['inputComment'], $_SESSION['user']['nickname'], $_POST['idRef']);
 				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}elseif(isset($_POST['addFriend'])){
@@ -77,7 +75,7 @@ class VisageLivreControler extends CI_Controller {
 				$data['content'] = 'signin';
 				$this->view = 'template_log';
 
-                $this->Users_model->deleteUser($_SESSION['user']['nickname']);
+				$this->Users_model->deleteUser($_SESSION['user']['nickname']);
 				unset($_SESSION['user']);
 				$_SESSION['mode'] = 'connection';
 				header("Location: ".base_url('index.php/VisageLivreControler/index/signin')); // redirection vers la page de home
@@ -86,7 +84,7 @@ class VisageLivreControler extends CI_Controller {
 				$data['content'] = 'home';
 				$this->view = 'template';
 
-                $this->Users_model->confirmFriendRequest($_SESSION['user']['nickname'], $_POST['confirmRequest']);
+				$this->Users_model->confirmFriendRequest($_SESSION['user']['nickname'], $_POST['confirmRequest']);
 				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}elseif(isset($_POST['denyRequest'])){
 
@@ -95,10 +93,16 @@ class VisageLivreControler extends CI_Controller {
 
                 $this->Users_model->denyFriendRequest($_SESSION['user']['nickname'], $_POST['denyRequest']);
 				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
+			}elseif(isset($_POST['deleteDocument'])){
+
+				$data['content'] = 'home';
+				$this->view = 'template';
+
+				$this->Users_model->deleteDocument($_POST['deletePost']);
+				header("Location: ".base_url('index.php/VisageLivreControler/index/home')); // redirection vers la page de home
 			}else{
                 $data['content'] = 'home';
                 $this->view = 'template';
-                
             }
             
             
@@ -151,8 +155,8 @@ class VisageLivreControler extends CI_Controller {
         
         $this->load->vars($data);
         $this->load->view($this->view);
-        print_r($_POST);
-        print_r($_SESSION);
+//        print_r($_POST);
+//        print_r($_SESSION);
     }
     
     
