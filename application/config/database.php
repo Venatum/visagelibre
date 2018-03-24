@@ -80,7 +80,7 @@ $db['default'] = array(
 	'password' => '',
 	'database' => '',
 	'dbdriver' => 'postgre',
-	'dbprefix' => 'visagelibre.',
+	'dbprefix' => 'visagelivre.',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
