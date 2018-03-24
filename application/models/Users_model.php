@@ -45,11 +45,7 @@ class Users_model extends CI_Model
 			$_SESSION['user']['nickname'] = $tab[0]['nickname'];
 			$_SESSION['user']['email'] = $tab[0]['email'];
 		}
-		$tab = $this->setUserByEmail($_POST['inputEmail']);
-		$_SESSION['user']['nickname'] = $tab[0]['nickname'];
-		$_SESSION['user']['email'] = $tab[0]['email'];
-
-		return $connection = true;
+		return $connection;
 	}
 
 
@@ -223,9 +219,12 @@ class Users_model extends CI_Model
     
     public function deleteUser($nickname){
 
-		$sql = 'DELETE FROM visagelivre._user WHERE nickname = ?';
+		$sql = '	DELETE FROM visagelivre._friendof WHERE nickname = ? OR friend = ?; 
+ 					DELETE FROM visagelivre._friendrequest WHERE nickname = ? OR target = ?; 
+ 					DELETE FROM visagelivre._document WHERE auteur = ?;
+ 					DELETE FROM visagelivre._user WHERE nickname = ?;';
 
-		$query = $this->db->query($sql, array($nickname));
+		$query = $this->db->query($sql, array($nickname, $nickname, $nickname, $nickname, $nickname, $nickname));
 
 		
 	}
